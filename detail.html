@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VietJet Air - Thông Tin Hành Khách</title>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="topbar">
+  <span>Hotline: 1900 1886</span>
+  <span>|</span>
+  <span>Tiếng Việt ▾</span>
+  <span>|</span>
+  <span>Đăng nhập / Đăng ký</span>
+</div>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="logo">
+      <a href="index.html" style="text-decoration:none">
+        <span class="logo-viet">Viet</span><span class="logo-jet">Jet</span>
+        <span class="logo-air">Air</span>
+      </a>
+    </div>
+    <nav class="nav">
+      <a href="index.html" class="nav-link active">Đặt vé</a>
+      <a href="#" class="nav-link">Check-in</a>
+      <a href="#" class="nav-link">Quản lý đặt chỗ</a>
+      <a href="#" class="nav-link">Hành lý</a>
+      <a href="#" class="nav-link">SkyBoss</a>
+    </nav>
+  </div>
+</header>
+
+<!-- PROGRESS BAR -->
+<div class="progress-bar">
+  <div class="progress-inner">
+    <div class="progress-step done">
+      <div class="step-circle done">✓</div>
+      <div class="step-label">Chọn chuyến bay</div>
+    </div>
+    <div class="progress-line active"></div>
+    <div class="progress-step active">
+      <div class="step-circle active">2</div>
+      <div class="step-label">Hành khách</div>
+    </div>
+    <div class="progress-line"></div>
+    <div class="progress-step">
+      <div class="step-circle">3</div>
+      <div class="step-label">Dịch vụ bổ sung</div>
+    </div>
+    <div class="progress-line"></div>
+    <div class="progress-step">
+      <div class="step-circle">4</div>
+      <div class="step-label">Thanh toán</div>
+    </div>
+  </div>
+</div>
+
+<main class="main detail-main">
+  <div class="detail-layout">
+
+    <!-- LEFT COLUMN: Passenger Form -->
+    <div class="detail-form-col">
+
+      <!-- Flight Summary Card -->
+      <div class="detail-flight-summary">
+        <div class="summary-route-badge">Chuyến đi</div>
+        <div class="summary-row">
+          <div class="summary-times">
+            <div class="s-time">08:00</div>
+            <div class="s-duration">─── 2h10m ✈ ───</div>
+            <div class="s-time">10:10</div>
+          </div>
+          <div class="summary-cities">
+            <div class="s-city">Hà Nội <span class="s-iata">HAN</span></div>
+            <div class="s-arrow">→</div>
+            <div class="s-city">TP. HCM <span class="s-iata">SGN</span></div>
+          </div>
+          <div class="summary-meta">
+            <div class="s-flight-num" id="flight-display">VJ 123</div>
+            <div class="s-fare-type eco-badge">ECO</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Passenger Info -->
+      <div class="form-section">
+        <h3 class="form-section-title">
+          <span class="section-num">1</span>
+          Thông tin hành khách
+        </h3>
+        <div class="form-grid">
+          <div class="form-group half">
+            <label>Danh xưng *</label>
+            <select>
+              <option>Ông</option>
+              <option>Bà</option>
+              <option>Cô</option>
+            </select>
+          </div>
+          <div class="form-group full">
+            <label>Họ và tên (theo CMND/Hộ chiếu) *</label>
+            <input type="text" placeholder="VD: NGUYEN VAN A" style="text-transform:uppercase"/>
+          </div>
+          <div class="form-group half">
+            <label>Ngày sinh *</label>
+            <input type="date" />
+          </div>
+          <div class="form-group half">
+            <label>Quốc tịch *</label>
+            <select>
+              <option>Việt Nam</option>
+              <option>Khác</option>
+            </select>
+          </div>
+          <div class="form-group full">
+            <label>Email *</label>
+            <input type="email" placeholder="example@email.com"/>
+          </div>
+          <div class="form-group half">
+            <label>Số điện thoại *</label>
+            <input type="tel" placeholder="090xxxxxxx"/>
+          </div>
+          <div class="form-group half">
+            <label>Mã vùng</label>
+            <select>
+              <option>+84 Việt Nam</option>
+              <option>+1 Mỹ</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Baggage Add-on -->
+      <div class="form-section">
+        <h3 class="form-section-title">
+          <span class="section-num">2</span>
+          Hành lý bổ sung
+        </h3>
+        <div class="baggage-options">
+          <label class="baggage-item">
+            <input type="radio" name="baggage" value="0" checked>
+            <div class="baggage-label">
+              <span>Không thêm</span>
+              <span class="baggage-price">0đ</span>
+            </div>
+          </label>
+          <label class="baggage-item">
+            <input type="radio" name="baggage" value="20kg">
+            <div class="baggage-label">
+              <span>20 kg</span>
+              <span class="baggage-price">220,000đ</span>
+            </div>
+          </label>
+          <label class="baggage-item">
+            <input type="radio" name="baggage" value="30kg">
+            <div class="baggage-label">
+              <span>30 kg</span>
+              <span class="baggage-price">350,000đ</span>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Consent Form -->
+      <div class="form-section">
+        <h3 class="form-section-title">
+          <span class="section-num">3</span>
+          Đồng ý xử lý dữ liệu cá nhân
+        </h3>
+        <div id="consent-slot" class="consent-box">
+          <div class="consent-item">
+            <input type="checkbox" id="c1">
+            <label for="c1">Tôi đồng ý với <a href="#">Điều khoản & Điều kiện</a> của VietJet Air</label>
+          </div>
+          <div class="consent-item">
+            <input type="checkbox" id="c2">
+            <label for="c2">Tôi đồng ý cho VietJet xử lý dữ liệu cá nhân theo <a href="#">Chính sách bảo mật</a></label>
+          </div>
+          <div class="consent-item">
+            <input type="checkbox" id="c3">
+            <label for="c3">Tôi muốn nhận thông tin khuyến mãi và ưu đãi từ VietJet Air (tùy chọn)</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <a href="index.html" class="btn-back">← Quay lại</a>
+        <a href="success.html"><button class="btn-continue">TIẾP TỤC →</button></a>
+      </div>
+    </div>
+
+    <!-- RIGHT COLUMN: Price Summary -->
+    <div class="detail-price-col">
+      <div class="price-summary-card">
+        <h3>Tóm tắt đặt chỗ</h3>
+        <div class="price-row">
+          <span>Vé máy bay (1 người)</span>
+          <span class="price-amount" id="base-price">1,200,000đ</span>
+        </div>
+        <div class="price-row">
+          <span>Thuế & phí</span>
+          <span class="price-amount">180,000đ</span>
+        </div>
+        <div class="price-row">
+          <span>Hành lý bổ sung</span>
+          <span class="price-amount">0đ</span>
+        </div>
+        <div class="price-divider"></div>
+        <div class="price-row total">
+          <span>Tổng cộng</span>
+          <span class="price-total" id="total-price">1,380,000đ</span>
+        </div>
+        <div class="price-note">* Giá đã bao gồm VAT</div>
+      </div>
+
+      <div class="contact-card">
+        <h4>Cần hỗ trợ?</h4>
+        <p>📞 1900 1886</p>
+        <p>✉️ support@vietjetair.com</p>
+        <p>⏰ 24/7</p>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">VietJet Air</div>
+    <div class="footer-links">
+      <a href="#">Về chúng tôi</a>
+      <a href="#">Điều khoản sử dụng</a>
+      <a href="#">Chính sách bảo mật</a>
+      <a href="#">Liên hệ</a>
+    </div>
+    <div class="footer-copy">© 2026 VietJet Air. Bản quyền thuộc về VietJet Air.</div>
+  </div>
+</footer>
+
+<script>
+const flights = {
+  'VJ123': { num: 'VJ 123', price: '1,200,000đ', total: '1,380,000đ', time: '08:00 → 10:10' },
+  'VJ125': { num: 'VJ 125', price: '1,500,000đ', total: '1,680,000đ', time: '14:00 → 16:10' }
+};
+const id = sessionStorage.getItem('selectedFlight') || 'VJ123';
+const f = flights[id];
+if (f) {
+  document.getElementById('flight-display').textContent = f.num;
+  document.getElementById('base-price').textContent = f.price;
+  document.getElementById('total-price').textContent = f.total;
+}
+</script>
+</body>
+</html>

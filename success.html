@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VietJet Air - Đặt Vé Thành Công</title>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="topbar">
+  <span>Hotline: 1900 1886</span>
+  <span>|</span>
+  <span>Tiếng Việt ▾</span>
+  <span>|</span>
+  <span>Đăng nhập / Đăng ký</span>
+</div>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="logo">
+      <a href="index.html" style="text-decoration:none">
+        <span class="logo-viet">Viet</span><span class="logo-jet">Jet</span>
+        <span class="logo-air">Air</span>
+      </a>
+    </div>
+    <nav class="nav">
+      <a href="index.html" class="nav-link">Đặt vé</a>
+      <a href="#" class="nav-link">Check-in</a>
+      <a href="#" class="nav-link active">Quản lý đặt chỗ</a>
+      <a href="#" class="nav-link">Hành lý</a>
+      <a href="#" class="nav-link">SkyBoss</a>
+    </nav>
+  </div>
+</header>
+
+<!-- PROGRESS BAR -->
+<div class="progress-bar">
+  <div class="progress-inner">
+    <div class="progress-step done">
+      <div class="step-circle done">✓</div>
+      <div class="step-label">Chọn chuyến bay</div>
+    </div>
+    <div class="progress-line active"></div>
+    <div class="progress-step done">
+      <div class="step-circle done">✓</div>
+      <div class="step-label">Hành khách</div>
+    </div>
+    <div class="progress-line active"></div>
+    <div class="progress-step done">
+      <div class="step-circle done">✓</div>
+      <div class="step-label">Dịch vụ bổ sung</div>
+    </div>
+    <div class="progress-line active"></div>
+    <div class="progress-step active">
+      <div class="step-circle active">✓</div>
+      <div class="step-label">Thanh toán</div>
+    </div>
+  </div>
+</div>
+
+<main class="main">
+
+  <!-- SUCCESS BANNER -->
+  <div class="success-banner">
+    <div class="success-icon">✓</div>
+    <div class="success-text">
+      <h2>Đặt vé thành công!</h2>
+      <p>Thông tin đặt chỗ đã được gửi đến email của bạn.</p>
+    </div>
+  </div>
+
+  <div class="success-layout">
+
+    <!-- Booking Card -->
+    <div class="booking-card">
+      <div class="booking-header">
+        <div>
+          <div class="booking-label">Mã đặt chỗ</div>
+          <div class="booking-code">VJ-DEMO-001</div>
+        </div>
+        <div class="booking-status">ĐÃ XÁC NHẬN</div>
+      </div>
+
+      <div class="booking-flight">
+        <div class="bf-route">
+          <div class="bf-city">
+            <div class="bf-time">08:00</div>
+            <div class="bf-iata">HAN</div>
+            <div class="bf-name">Hà Nội</div>
+            <div class="bf-terminal">Nhà ga T1</div>
+          </div>
+          <div class="bf-middle">
+            <div class="bf-plane">✈</div>
+            <div class="bf-duration">2h 10m</div>
+            <div class="bf-nonstop">Bay thẳng</div>
+          </div>
+          <div class="bf-city">
+            <div class="bf-time">10:10</div>
+            <div class="bf-iata">SGN</div>
+            <div class="bf-name">TP. Hồ Chí Minh</div>
+            <div class="bf-terminal">Nhà ga T1</div>
+          </div>
+        </div>
+        <div class="bf-meta">
+          <div class="bf-meta-item"><span>Chuyến bay</span><strong>VJ 123</strong></div>
+          <div class="bf-meta-item"><span>Ngày bay</span><strong>25/04/2026</strong></div>
+          <div class="bf-meta-item"><span>Hạng ghế</span><strong class="eco-badge">ECO</strong></div>
+          <div class="bf-meta-item"><span>Hành lý xách tay</span><strong>7 kg</strong></div>
+        </div>
+      </div>
+
+      <div class="passenger-summary">
+        <h4>Thông tin hành khách</h4>
+        <table class="pax-table">
+          <tr>
+            <th>Hành khách</th>
+            <th>Loại</th>
+            <th>Số vé</th>
+          </tr>
+          <tr>
+            <td>Nguyễn Văn A</td>
+            <td>Người lớn</td>
+            <td>VJ-123456789</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="price-breakdown">
+        <h4>Chi tiết thanh toán</h4>
+        <div class="pb-row"><span>Vé máy bay</span><span>1,200,000đ</span></div>
+        <div class="pb-row"><span>Thuế & phí</span><span>180,000đ</span></div>
+        <div class="pb-row"><span>Hành lý bổ sung</span><span>0đ</span></div>
+        <div class="pb-row total"><span>Tổng cộng</span><span class="pb-total">1,380,000đ</span></div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Actions + DSAR -->
+    <div class="success-right-col">
+
+      <div class="action-card">
+        <h4>Tiếp theo</h4>
+        <a href="#" class="action-btn primary-action">📋 In vé / xuất PDF</a>
+        <a href="#" class="action-btn">✈ Online Check-in</a>
+        <a href="#" class="action-btn">🧳 Mua thêm hành lý</a>
+        <a href="#" class="action-btn">🍜 Đặt suất ăn</a>
+        <a href="index.html" class="action-btn">🔍 Đặt chuyến khác</a>
+      </div>
+
+      <!-- DSAR Form -->
+      <div class="dsar-card">
+        <h4>Yêu cầu xử lý dữ liệu cá nhân</h4>
+        <p class="dsar-intro">Bạn có quyền yêu cầu truy cập, chỉnh sửa hoặc xóa dữ liệu cá nhân của mình theo quy định của Nghị định 13/2023/NĐ-CP.</p>
+
+        <div id="dsar-slot">
+          <div class="dsar-form">
+            <div class="form-group full">
+              <label>Loại yêu cầu *</label>
+              <select>
+                <option>Truy cập dữ liệu cá nhân</option>
+                <option>Chỉnh sửa dữ liệu cá nhân</option>
+                <option>Xóa dữ liệu cá nhân</option>
+                <option>Phản đối xử lý dữ liệu</option>
+                <option>Rút lại sự đồng ý</option>
+              </select>
+            </div>
+            <div class="form-group full">
+              <label>Email liên lạc *</label>
+              <input type="email" placeholder="email@example.com" />
+            </div>
+            <div class="form-group full">
+              <label>Mô tả yêu cầu</label>
+              <textarea rows="3" placeholder="Mô tả chi tiết yêu cầu của bạn..."></textarea>
+            </div>
+            <button class="dsar-submit-btn" onclick="showDsarConfirm()">Gửi yêu cầu</button>
+            <div id="dsar-confirm" class="dsar-confirm" style="display:none">
+              ✅ Yêu cầu của bạn đã được ghi nhận. Chúng tôi sẽ phản hồi trong vòng 72 giờ.
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">VietJet Air</div>
+    <div class="footer-links">
+      <a href="#">Về chúng tôi</a>
+      <a href="#">Điều khoản sử dụng</a>
+      <a href="#">Chính sách bảo mật</a>
+      <a href="#">Liên hệ</a>
+    </div>
+    <div class="footer-copy">© 2026 VietJet Air. Bản quyền thuộc về VietJet Air.</div>
+  </div>
+</footer>
+
+<script>
+function showDsarConfirm() {
+  document.getElementById('dsar-confirm').style.display = 'block';
+}
+</script>
+</body>
+</html>
