@@ -1,475 +1,615 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quyền riêng tư - VietJet Air</title>
-  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <style>
-    /* ── PAGE LAYOUT ── */
-    .privacy-hero {
-      background: linear-gradient(135deg, #c4171f 0%, #d91c2b 50%, #e8333f 100%);
-      padding: 56px 30px 48px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .privacy-hero::before {
-      content: '';
-      position: absolute;
-      top: -60px; right: -60px;
-      width: 320px; height: 320px;
-      background: rgba(255,255,255,0.06);
-      border-radius: 50%;
-    }
-    .privacy-hero::after {
-      content: '';
-      position: absolute;
-      bottom: -80px; left: -40px;
-      width: 240px; height: 240px;
-      background: rgba(255,255,255,0.04);
-      border-radius: 50%;
-    }
-    .privacy-hero h1 {
-      color: white;
-      font-size: 36px;
-      font-weight: 700;
-      margin: 0 0 10px;
-      position: relative;
-      z-index: 1;
-    }
-    .privacy-hero p {
-      color: rgba(255,255,255,0.82);
-      font-size: 16px;
-      max-width: 100%;
-      margin: 0 auto;
-      line-height: 1.6;
-      position: relative;
-      z-index: 1;
-    }
-    .privacy-hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(255,255,255,0.18);
-      border: 1px solid rgba(255,255,255,0.3);
-      color: white;
-      border-radius: 20px;
-      padding: 5px 16px;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      margin-bottom: 18px;
-      text-transform: uppercase;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quyền riêng tư - VietJet Air</title>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* ── PAGE LAYOUT ── */
+        .privacy-hero {
+            background: linear-gradient(135deg, #c4171f 0%, #d91c2b 50%, #e8333f 100%);
+            padding: 56px 30px 48px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
 
-    .privacy-container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 40px 30px 60px;
-    }
+        .privacy-hero::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            right: -60px;
+            width: 320px;
+            height: 320px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 50%;
+        }
 
-    .section-intro {
-      background: #fff8f0;
-      border-left: 4px solid #d91c2b;
-      border-radius: 0 8px 8px 0;
-      padding: 16px 20px;
-      margin-bottom: 32px;
-      font-size: 14px;
-      color: #555;
-      line-height: 1.65;
-    }
-    .section-intro strong { color: #222; }
+        .privacy-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -80px;
+            left: -40px;
+            width: 240px;
+            height: 240px;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 50%;
+        }
 
-    /* ── RIGHTS GRID ── */
-    .rights-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
+        .privacy-hero h1 {
+            color: white;
+            font-size: 36px;
+            font-weight: 700;
+            margin: 0 0 10px;
+            position: relative;
+            z-index: 1;
+        }
 
-    .right-card {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
-      border: 1.5px solid #f0f0f0;
-      padding: 28px 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      transition: box-shadow 0.2s, border-color 0.2s, transform 0.15s;
-      position: relative;
-      overflow: hidden;
-    }
-    .right-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, #d91c2b, #ff6b6b);
-      opacity: 0;
-      transition: opacity 0.2s;
-    }
-    .right-card:hover {
-      box-shadow: 0 6px 24px rgba(217,28,43,0.12);
-      border-color: #f5c0c4;
-      transform: translateY(-2px);
-    }
-    .right-card:hover::before { opacity: 1; }
+        .privacy-hero p {
+            color: rgba(255, 255, 255, 0.82);
+            font-size: 16px;
+            max-width: 100%;
+            margin: 0 auto;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
 
-    .card-icon {
-      width: 44px; height: 44px;
-      border-radius: 10px;
-      background: #fff0f1;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 20px;
-      flex-shrink: 0;
-    }
-    .card-title {
-      font-size: 15px;
-      font-weight: 700;
-      color: #1a1a1a;
-      margin: 0;
-    }
-    .card-desc {
-      font-size: 13.5px;
-      color: #666;
-      line-height: 1.6;
-      flex: 1;
-    }
-    .card-tag {
-      display: inline-block;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.6px;
-      text-transform: uppercase;
-      padding: 3px 10px;
-      border-radius: 20px;
-      background: #fde8ea;
-      color: #c01525;
-      width: fit-content;
-    }
+        .privacy-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.18);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            border-radius: 20px;
+            padding: 5px 16px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 18px;
+            text-transform: uppercase;
+        }
 
-    /* ── ACTION BUTTON ── */
-    .btn-action {
-      background: #d91c2b;
-      color: white;
-      border: none;
-      padding: 11px 22px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 13px;
-      font-weight: 700;
-      font-family: inherit;
-      letter-spacing: 0.4px;
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      margin-top: 4px;
-      transition: background 0.15s, transform 0.1s;
-      width: 100%;
-      justify-content: center;
-    }
-    .btn-action:hover { background: #b81624; }
-    .btn-action:active { transform: scale(0.98); }
-    .btn-action .btn-arrow {
-      font-size: 14px;
-      transition: transform 0.15s;
-    }
-    .btn-action:hover .btn-arrow { transform: translateX(3px); }
+        .privacy-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 30px 60px;
+        }
 
-    /* ── LEGAL NOTE ── */
-    .legal-note {
-      margin-top: 36px;
-      background: #f8f8f8;
-      border-radius: 10px;
-      padding: 20px 24px;
-      font-size: 13px;
-      color: #777;
-      line-height: 1.65;
-      border: 1px solid #e8e8e8;
-    }
-    .legal-note strong { color: #444; display: block; margin-bottom: 4px; font-size: 13px; }
+        .section-intro {
+            background: #fff8f0;
+            border-left: 4px solid #d91c2b;
+            border-radius: 0 8px 8px 0;
+            padding: 16px 20px;
+            margin-bottom: 32px;
+            font-size: 14px;
+            color: #555;
+            line-height: 1.65;
+        }
 
-    /* ── POPUP OVERLAY ── */
-    .popup-overlay {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.65);
-      backdrop-filter: blur(4px);
-      z-index: 9999;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-    }
-    .popup-content {
-      background: white;
-      border-radius: 14px;
-      width: 100%;
-      max-width: 820px;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 24px 64px rgba(0,0,0,0.25);
-      animation: popIn 0.2s ease;
-    }
-    @keyframes popIn {
-      from { opacity: 0; transform: scale(0.95) translateY(10px); }
-      to   { opacity: 1; transform: scale(1) translateY(0); }
-    }
+        .section-intro strong {
+            color: #222;
+        }
 
-    .popup-header {
-      background: #d91c2b;
-      color: white;
-      padding: 18px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .popup-header-left { display: flex; align-items: center; gap: 10px; }
-    .popup-header-icon {
-      width: 32px; height: 32px;
-      background: rgba(255,255,255,0.2);
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 16px;
-    }
-    .popup-title { font-size: 16px; font-weight: 700; }
-    .popup-subtitle { font-size: 12px; opacity: 0.8; margin-top: 1px; }
+        /* ── RIGHTS GRID ── */
+        .rights-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
 
-    .popup-close {
-      width: 32px; height: 32px;
-      border: none;
-      background: rgba(255,255,255,0.2);
-      color: white;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 18px;
-      display: flex; align-items: center; justify-content: center;
-      transition: background 0.15s;
-      flex-shrink: 0;
-    }
-    .popup-close:hover { background: rgba(255,255,255,0.35); }
+        .right-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+            border: 1.5px solid #f0f0f0;
+            padding: 28px 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            transition: box-shadow 0.2s, border-color 0.2s, transform 0.15s;
+            position: relative;
+            overflow: hidden;
+        }
 
-    .popup-body { padding: 0; }
-    #consent-frame {
-      width: 100%;
-      height: 480px;
-      display: block;
-      border: none;
-    }
+        .right-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #d91c2b, #ff6b6b);
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
 
-    .popup-footer {
-      padding: 14px 24px;
-      border-top: 1px solid #f0f0f0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: #fafafa;
-    }
-    .popup-footer-note {
-      font-size: 12px;
-      color: #aaa;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .popup-footer-note span { font-size: 14px; }
-    .popup-close-btn {
-      padding: 8px 20px;
-      border: 1.5px solid #e0e0e0;
-      background: white;
-      border-radius: 7px;
-      font-size: 13px;
-      font-weight: 600;
-      font-family: inherit;
-      cursor: pointer;
-      color: #444;
-      transition: all 0.15s;
-    }
-    .popup-close-btn:hover { border-color: #d91c2b; color: #d91c2b; }
+        .right-card:hover {
+            box-shadow: 0 6px 24px rgba(217, 28, 43, 0.12);
+            border-color: #f5c0c4;
+            transform: translateY(-2px);
+        }
 
-    @media (max-width: 640px) {
-      .rights-grid { grid-template-columns: 1fr; }
-      .privacy-hero h1 { font-size: 26px; }
-      #consent-frame { height: 360px; }
-    }
-  </style>
+        .right-card:hover::before {
+            opacity: 1;
+        }
+
+        .card-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: #fff0f1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .card-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin: 0;
+        }
+
+        .card-desc {
+            font-size: 13.5px;
+            color: #666;
+            line-height: 1.6;
+            flex: 1;
+        }
+
+        .card-tag {
+            display: inline-block;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            padding: 3px 10px;
+            border-radius: 20px;
+            background: #fde8ea;
+            color: #c01525;
+            width: fit-content;
+        }
+
+        /* ── ACTION BUTTON ── */
+        .btn-action {
+            background: #d91c2b;
+            color: white;
+            border: none;
+            padding: 11px 22px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 700;
+            font-family: inherit;
+            letter-spacing: 0.4px;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            margin-top: 4px;
+            transition: background 0.15s, transform 0.1s;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .btn-action:hover {
+            background: #b81624;
+        }
+
+        .btn-action:active {
+            transform: scale(0.98);
+        }
+
+        .btn-action .btn-arrow {
+            font-size: 14px;
+            transition: transform 0.15s;
+        }
+
+        .btn-action:hover .btn-arrow {
+            transform: translateX(3px);
+        }
+
+        /* ── LEGAL NOTE ── */
+        .legal-note {
+            margin-top: 36px;
+            background: #f8f8f8;
+            border-radius: 10px;
+            padding: 20px 24px;
+            font-size: 13px;
+            color: #777;
+            line-height: 1.65;
+            border: 1px solid #e8e8e8;
+        }
+
+        .legal-note strong {
+            color: #444;
+            display: block;
+            margin-bottom: 4px;
+            font-size: 13px;
+        }
+
+        /* ── POPUP OVERLAY ── */
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(4px);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .popup-content {
+            background: white;
+            border-radius: 14px;
+            width: 100%;
+            max-width: 820px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 24px 64px rgba(0, 0, 0, 0.25);
+            animation: popIn 0.2s ease;
+        }
+
+        @keyframes popIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95) translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .popup-header {
+            background: #d91c2b;
+            color: white;
+            padding: 18px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .popup-header-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .popup-header-icon {
+            width: 32px;
+            height: 32px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .popup-title {
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .popup-subtitle {
+            font-size: 12px;
+            opacity: 0.8;
+            margin-top: 1px;
+        }
+
+        .popup-close {
+            width: 32px;
+            height: 32px;
+            border: none;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.15s;
+            flex-shrink: 0;
+        }
+
+        .popup-close:hover {
+            background: rgba(255, 255, 255, 0.35);
+        }
+
+        .popup-body {
+            padding: 0;
+        }
+
+        #consent-frame {
+            width: 100%;
+            height: 480px;
+            display: block;
+            border: none;
+        }
+
+        .popup-footer {
+            padding: 14px 24px;
+            border-top: 1px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #fafafa;
+        }
+
+        .popup-footer-note {
+            font-size: 12px;
+            color: #aaa;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .popup-footer-note span {
+            font-size: 14px;
+        }
+
+        .popup-close-btn {
+            padding: 8px 20px;
+            border: 1.5px solid #e0e0e0;
+            background: white;
+            border-radius: 7px;
+            font-size: 13px;
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            color: #444;
+            transition: all 0.15s;
+        }
+
+        .popup-close-btn:hover {
+            border-color: #d91c2b;
+            color: #d91c2b;
+        }
+
+        @media (max-width: 640px) {
+            .rights-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .privacy-hero h1 {
+                font-size: 26px;
+            }
+
+            #consent-frame {
+                height: 360px;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-<!-- TOPBAR -->
-<div class="topbar">
-  <span>Hotline: 1900 1886</span>
-  <span>|</span>
-  <span>Tiếng Việt ▾</span>
-  <span>|</span>
-  <span>Đăng nhập / Đăng ký</span>
-</div>
-
-<!-- HEADER -->
-<header class="header">
-  <div class="header-inner">
-    <div class="logo">
-      <a href="index.html" style="text-decoration:none">
-        <span class="logo-viet">Viet</span><span class="logo-jet">Jet</span>
-        <span class="logo-air">Air</span>
-      </a>
-    </div>
-    <nav class="nav">
-      <a href="index.html" class="nav-link">Đặt vé</a>
-      <a href="#" class="nav-link">Check-in</a>
-      <a href="#" class="nav-link">Quản lý đặt chỗ</a>
-      <a href="#" class="nav-link active">Quyền riêng tư</a>
-    </nav>
-  </div>
-</header>
-
-<!-- HERO -->
-<div class="privacy-hero">
-  <div class="privacy-hero-badge">🔒 Bảo vệ dữ liệu cá nhân</div>
-  <h1>Quyền của Chủ thể Dữ liệu</h1>
-  <p>VietJet Air cam kết bảo vệ quyền riêng tư của bạn theo Luật Bảo vệ DLCN.</p>
-</div>
-
-<div class="privacy-container">
-
-  <!-- INTRO NOTE -->
-  <div class="section-intro">
-    Theo quy định pháp luật Việt Nam, bạn có các quyền sau đây đối với dữ liệu cá nhân của mình mà VietJet Air đang xử lý.
-    Để thực thi bất kỳ quyền nào, vui lòng nhấn nút tương ứng — chúng tôi sẽ phản hồi trong vòng <strong>72 giờ làm việc</strong>.
-  </div>
-
-  <!-- RIGHTS GRID -->
-  <div class="rights-grid">
-
-    <div class="right-card">
-      <p class="card-title">Quyền truy cập dữ liệu</p>
-      <p class="card-desc">Bạn có quyền biết dữ liệu cá nhân nào của mình đang được VietJet Air lưu trữ và xử lý, mục đích sử dụng và các bên thứ ba có thể nhận dữ liệu đó.</p>
-      <button class="btn-action" onclick="openConsentFrame('https://irm.datatrust.one/consent/839275/4164/edc24216-4164-4141-b7a3-ed800bd3db47', 'Quyền truy cập dữ liệu', '👁️')">
-        Truy cập dữ liệu <span class="btn-arrow">→</span>
-      </button>
+    <!-- TOPBAR -->
+    <div class="topbar">
+        <span>Hotline: 1900 1886</span>
+        <span>|</span>
+        <span>Tiếng Việt ▾</span>
+        <span>|</span>
+        <span>Đăng nhập / Đăng ký</span>
     </div>
 
-    <div class="right-card">
-      <div class="card-icon">✏️</div>
-      <p class="card-title">Quyền chỉnh sửa dữ liệu</p>
-      <p class="card-desc">Bạn có quyền yêu cầu chỉnh sửa dữ liệu cá nhân không chính xác hoặc không đầy đủ mà VietJet Air đang nắm giữ về bạn.</p>
-      <button class="btn-action" onclick="openConsentFrame('https://irm.datatrust.one/consent/839275/4164/edc24216-4164-4141-b7a3-ed800bd3db47', 'Quyền chỉnh sửa dữ liệu', '✏️')">
-        Yêu cầu chỉnh sửa <span class="btn-arrow">→</span>
-      </button>
-    </div>
-
-    <div class="right-card">
-      <div class="card-icon">🗑️</div>
-      <p class="card-title">Quyền xóa dữ liệu</p>
-      <p class="card-desc">Bạn có quyền yêu cầu xóa dữ liệu cá nhân khi dữ liệu không còn cần thiết cho mục đích đã thu thập hoặc bạn rút lại sự đồng ý.</p>
-      <button class="btn-action" onclick="openConsentFrame('https://irm.datatrust.one/consent/839275/4164/edc24216-4164-4141-b7a3-ed800bd3db47', 'Quyền xóa dữ liệu', '🗑️')">
-        Yêu cầu xóa <span class="btn-arrow">→</span>
-      </button>
-    </div>
-
-    <div class="right-card">
-      <div class="card-icon">🚫</div>
-      <p class="card-title">Quyền phản đối xử lý</p>
-      <p class="card-desc">Bạn có quyền phản đối việc VietJet Air xử lý dữ liệu cá nhân của bạn cho mục đích tiếp thị trực tiếp hoặc khi có lý do chính đáng.</p>
-      <button class="btn-action" onclick="openConsentFrame('https://irm.datatrust.one/consent/839275/4164/edc24216-4164-4141-b7a3-ed800bd3db47', 'Quyền phản đối xử lý', '🚫')">
-        Gửi phản đối <span class="btn-arrow">→</span>
-      </button>
-    </div>
-
-    <div class="right-card">
-      <div class="card-icon">↩️</div>
-      <p class="card-title">Quyền rút lại đồng ý</p>
-      <p class="card-desc">Bạn có thể rút lại sự đồng ý đã cấp trước đó bất cứ lúc nào. Việc rút lại đồng ý không ảnh hưởng đến tính hợp pháp của quá trình xử lý trước đó.</p>
-      <button class="btn-action" onclick="openConsentFrame('https://irm.datatrust.one/consent/839275/4164/edc24216-4164-4141-b7a3-ed800bd3db47', 'Rút lại đồng ý', '↩️')">
-        Rút lại đồng ý <span class="btn-arrow">→</span>
-      </button>
-    </div>
-
-    <div class="right-card">
-      <div class="card-icon">📦</div>
-      <p class="card-title">Quyền chuyển dữ liệu</p>
-      <p class="card-desc">Bạn có quyền nhận dữ liệu cá nhân của mình ở định dạng có cấu trúc, phổ biến và có thể đọc được bằng máy để chuyển sang tổ chức khác.</p>
-      <button class="btn-action" onclick="openConsentFrame('https://irm.datatrust.one/consent/839275/4164/edc24216-4164-4141-b7a3-ed800bd3db47', 'Quyền chuyển dữ liệu', '📦')">
-        Yêu cầu chuyển <span class="btn-arrow">→</span>
-      </button>
-    </div>
-
-  </div>
-
-  <!-- LEGAL NOTE -->
-  <div class="legal-note">
-    <strong>📋 Thông tin pháp lý</strong>
-    Các quyền trên được quy định tại Luật Bảo vệ DLCN của Chính phủ Việt Nam về bảo vệ dữ liệu cá nhân.
-    VietJet Air sẽ xác minh danh tính của bạn trước khi xử lý yêu cầu. Phản hồi sẽ được gửi đến email đã đăng ký trong vòng 72 giờ làm việc.
-    Mọi thắc mắc, liên hệ: <strong>privacy@vietjetair.com</strong> hoặc <strong>1900 1886</strong>.
-  </div>
-
-</div>
-
-<!-- POPUP -->
-<div id="consent-popup" class="popup-overlay" onclick="handleOverlayClick(event)">
-  <div class="popup-content">
-    <div class="popup-header">
-      <div class="popup-header-left">
-        <div class="popup-header-icon" id="popup-icon">🔒</div>
-        <div>
-          <div class="popup-title" id="popup-title">Thực thi quyền</div>
-          <div class="popup-subtitle">VietJet Air · Cổng quyền riêng tư</div>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-inner">
+            <div class="logo">
+                <a href="index.html" style="text-decoration:none">
+                    <span class="logo-viet">Viet</span><span class="logo-jet">Jet</span>
+                    <span class="logo-air">Air</span>
+                </a>
+            </div>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">Đặt vé</a>
+                <a href="#" class="nav-link">Check-in</a>
+                <a href="#" class="nav-link">Quản lý đặt chỗ</a>
+                <a href="#" class="nav-link active">Quyền riêng tư</a>
+            </nav>
         </div>
-      </div>
-      <button class="popup-close" onclick="closePopup()">✕</button>
+    </header>
+
+    <!-- HERO -->
+    <div class="privacy-hero">
+        <div class="privacy-hero-badge">🔒 Bảo vệ dữ liệu cá nhân</div>
+        <h1>Quyền của Chủ thể Dữ liệu</h1>
+        <p>VietJet Air cam kết bảo vệ quyền riêng tư của bạn theo Luật Bảo vệ DLCN.</p>
     </div>
-    <div class="popup-body">
-      <iframe id="consent-frame" frameborder="0"></iframe>
+
+    <div class="privacy-container">
+
+        <!-- INTRO NOTE -->
+        <div class="section-intro">
+            Theo quy định pháp luật Việt Nam, bạn có các quyền sau đây đối với dữ liệu cá nhân của mình mà VietJet Air
+            đang xử lý.
+            Để thực thi bất kỳ quyền nào, vui lòng nhấn nút tương ứng — chúng tôi sẽ phản hồi trong vòng <strong>72 giờ
+                làm việc</strong>.
+        </div>
+
+        <!-- RIGHTS GRID -->
+        <div class="rights-grid">
+
+            <div class="right-card">
+                <div class="card-icon">✅</div>
+                <p class="card-title">Quyền đồng ý</p>
+                <p class="card-desc">Bạn có quyền quyết định đồng ý hoặc không đồng ý cho phép VietJet Air xử lý dữ liệu
+                    cá nhân của mình cho từng mục đích cụ thể.</p>
+                <button class="btn-action" onclick="openConsentFrame('URL_CUA_BAN', 'Quyền đồng ý', '✅')">Thực hiện ngay
+                    →</button>
+            </div>
+
+            <div class="right-card">
+                <div class="card-icon">↩️</div>
+                <p class="card-title">Quyền rút lại sự đồng ý</p>
+                <p class="card-desc">Bạn có quyền rút lại sự đồng ý đã cấp trước đó bất kỳ lúc nào. Việc rút lại không
+                    ảnh hưởng đến các xử lý đã thực hiện trước đó.</p>
+                <button class="btn-action" onclick="openConsentFrame('URL_CUA_BAN', 'Rút lại sự đồng ý', '↩️')">Thực
+                    hiện ngay →</button>
+            </div>
+
+            <div class="right-card">
+                <div class="card-icon">✏️</div>
+                <p class="card-title">Quyền xem, chỉnh sửa</p>
+                <p class="card-desc">Bạn có quyền truy cập để xem, chỉnh sửa hoặc yêu cầu VietJet Air chỉnh sửa dữ liệu
+                    cá nhân không chính xác hoặc không đầy đủ.</p>
+                <button class="btn-action" onclick="openConsentFrame('URL_CUA_BAN', 'Xem và chỉnh sửa', '✏️')">Thực hiện
+                    ngay →</button>
+            </div>
+
+            <div class="right-card">
+                <div class="card-icon">🗑️</div>
+                <p class="card-title">Quyền xóa dữ liệu</p>
+                <p class="card-desc">Yêu cầu chúng tôi xóa dữ liệu cá nhân của bạn khi dữ liệu không còn cần thiết hoặc
+                    bạn đã rút lại sự đồng ý xử lý.</p>
+                <button class="btn-action" onclick="openConsentFrame('URL_CUA_BAN', 'Yêu cầu xóa dữ liệu', '🗑️')">Thực
+                    hiện ngay →</button>
+            </div>
+
+            <div class="right-card">
+                <div class="card-icon">⏸️</div>
+                <p class="card-title">Quyền hạn chế xử lý</p>
+                <p class="card-desc">Bạn có quyền yêu cầu hạn chế việc xử lý dữ liệu cá nhân của mình trong các trường
+                    hợp theo quy định của pháp luật.</p>
+                <button class="btn-action" onclick="openConsentFrame('URL_CUA_BAN', 'Hạn chế xử lý', '⏸️')">Thực hiện
+                    ngay →</button>
+            </div>
+
+            <div class="right-card">
+                <div class="card-icon">📦</div>
+                <p class="card-title">Quyền cung cấp dữ liệu</p>
+                <p class="card-desc">Bạn có quyền yêu cầu VietJet Air cung cấp bản sao dữ liệu cá nhân của mình để sử
+                    dụng cho mục đích cá nhân hoặc chuyển sang đơn vị khác.</p>
+                <button class="btn-action" onclick="openConsentFrame('URL_CUA_BAN', 'Cung cấp dữ liệu', '📦')">Thực hiện
+                    ngay →</button>
+            </div>
+
+            <div class="right-card">
+                <div class="card-icon">🚫</div>
+                <p class="card-title">Quyền phản đối xử lý</p>
+                <p class="card-desc">Bạn có quyền phản đối việc xử lý dữ liệu phục vụ mục đích tiếp thị trực tiếp hoặc
+                    phân tích hành vi tiêu dùng.</p>
+                <button class="btn-action" onclick="openConsentFrame('URL_CUA_BAN', 'Phản đối xử lý', '🚫')">Thực hiện
+                    ngay →</button>
+            </div>
+
+            <div class="right-card">
+                <div class="card-icon">📢</div>
+                <p class="card-title">Quyền khiếu nại, tố cáo</p>
+                <p class="card-desc">Nếu phát hiện xử lý dữ liệu trái phép, bạn có quyền thực hiện các thủ tục khiếu
+                    nại, tố cáo theo quy định pháp luật.</p>
+                <button class="btn-action" onclick="openConsentFrame('URL_CUA_BAN', 'Gửi khiếu nại', '📢')">Thực hiện
+                    ngay →</button>
+            </div>
+
+            <div class="right-card">
+                <div class="card-icon">⚖️</div>
+                <p class="card-title">Quyền bồi thường thiệt hại</p>
+                <p class="card-desc">Bạn có quyền yêu cầu bồi thường thiệt hại thực tế phát sinh nếu chứng minh được
+                    VietJet Air vi phạm quy định bảo vệ dữ liệu cá nhân.</p>
+                <button class="btn-action" onclick="openConsentFrame('URL_CUA_BAN', 'Yêu cầu bồi thường', '⚖️')">Thực
+                    hiện ngay →</button>
+            </div>
+
+            <div class="right-card">
+                <div class="card-icon">🛡️</div>
+                <p class="card-title">Giải pháp bảo vệ dữ liệu</p>
+                <p class="card-desc">VietJet Air cam kết triển khai các giải pháp kỹ thuật an toàn. Bạn cũng có quyền
+                    thực hiện các biện pháp tự bảo vệ dữ liệu cá nhân của mình.</p>
+                <button class="btn-action" onclick="openConsentFrame('URL_CUA_BAN', 'Giải pháp bảo vệ', '🛡️')">Thực
+                    hiện ngay →</button>
+            </div>
+
+        </div>
+
+        <!-- LEGAL NOTE -->
+        <div class="legal-note">
+            <strong>📋 Thông tin pháp lý</strong>
+            Các quyền trên được quy định tại Luật Bảo vệ DLCN của Chính phủ Việt Nam.
+            VietJet Air sẽ xác minh danh tính của bạn trước khi xử lý yêu cầu. Phản hồi sẽ được gửi đến email đã đăng ký
+            trong vòng 72 giờ làm việc.
+            Mọi thắc mắc, liên hệ: <strong>privacy@vietjetair.com</strong> hoặc <strong>1900 1886</strong>.
+        </div>
+
     </div>
-    <div class="popup-footer">
-      <div class="popup-footer-note">
-        <span>🔒</span> Kết nối bảo mật · datatrust.one
-      </div>
-      <button class="popup-close-btn" onclick="closePopup()">Đóng</button>
+
+    <!-- POPUP -->
+    <div id="consent-popup" class="popup-overlay" onclick="handleOverlayClick(event)">
+        <div class="popup-content">
+            <div class="popup-header">
+                <div class="popup-header-left">
+                    <div class="popup-header-icon" id="popup-icon">🔒</div>
+                    <div>
+                        <div class="popup-title" id="popup-title">Thực thi quyền</div>
+                        <div class="popup-subtitle">VietJet Air · Cổng quyền riêng tư</div>
+                    </div>
+                </div>
+                <button class="popup-close" onclick="closePopup()">✕</button>
+            </div>
+            <div class="popup-body">
+                <iframe id="consent-frame" frameborder="0"></iframe>
+            </div>
+            <div class="popup-footer">
+                <div class="popup-footer-note">
+                    <span>🔒</span> Kết nối bảo mật · datatrust.one
+                </div>
+                <button class="popup-close-btn" onclick="closePopup()">Đóng</button>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
 
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="footer-inner">
-    <div class="footer-logo">VietJet Air</div>
-    <div class="footer-links">
-      <a href="#">Về chúng tôi</a>
-      <a href="#">Điều khoản sử dụng</a>
-      <a href="#">Chính sách bảo mật</a>
-      <a href="#">Liên hệ</a>
-    </div>
-    <div class="footer-copy">© 2026 VietJet Air. Bản quyền thuộc về VietJet Air.</div>
-  </div>
-</footer>
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-logo">VietJet Air</div>
+            <div class="footer-links">
+                <a href="#">Về chúng tôi</a>
+                <a href="#">Điều khoản sử dụng</a>
+                <a href="#">Chính sách bảo mật</a>
+                <a href="#">Liên hệ</a>
+            </div>
+            <div class="footer-copy">© 2026 VietJet Air. Bản quyền thuộc về VietJet Air.</div>
+        </div>
+    </footer>
 
-<script>
-  function openConsentFrame(url, title, icon) {
-    document.getElementById('consent-frame').src = url;
-    document.getElementById('popup-title').textContent = title || 'Thực thi quyền';
-    document.getElementById('popup-icon').textContent = icon || '🔒';
-    document.getElementById('consent-popup').style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-  }
+    <script>
+        function openConsentFrame(url, title, icon) {
+            document.getElementById('consent-frame').src = url;
+            document.getElementById('popup-title').textContent = title || 'Thực thi quyền';
+            document.getElementById('popup-icon').textContent = icon || '🔒';
+            document.getElementById('consent-popup').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
 
-  function closePopup() {
-    document.getElementById('consent-popup').style.display = 'none';
-    document.getElementById('consent-frame').src = '';
-    document.body.style.overflow = '';
-  }
+        function closePopup() {
+            document.getElementById('consent-popup').style.display = 'none';
+            document.getElementById('consent-frame').src = '';
+            document.body.style.overflow = '';
+        }
 
-  function handleOverlayClick(e) {
-    if (e.target === document.getElementById('consent-popup')) closePopup();
-  }
+        function handleOverlayClick(e) {
+            if (e.target === document.getElementById('consent-popup')) closePopup();
+        }
 
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closePopup(); });
-</script>
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closePopup(); });
+    </script>
 
 </body>
+
 </html>
