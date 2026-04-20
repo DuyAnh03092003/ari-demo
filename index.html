@@ -1,306 +1,304 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VietJet Air - Đặt Vé Máy Bay</title>
-  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
-<!-- TOP BAR -->
-<div class="topbar">
-  <span>Hotline: 1900 1886</span>
-  <span>|</span>
-  <span>Tiếng Việt ▾</span>
-  <span>|</span>
-  <span>Đăng nhập / Đăng ký</span>
-</div>
-
-<!-- HEADER -->
-<header class="header">
-  <div class="header-inner">
-    <div class="logo">
-      <span class="logo-viet">Viet</span><span class="logo-jet">Jet</span>
-      <span class="logo-air">Air</span>
-    </div>
-    <nav class="nav">
-      <a href="index.html" class="nav-link active">Đặt vé</a>
-      <a href="#" class="nav-link">Check-in</a>
-      <a href="#" class="nav-link">Quản lý đặt chỗ</a>
-      <a href="#" class="nav-link">Hành lý</a>
-      <a href="#" class="nav-link">SkyBoss</a>
-    </nav>
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <span>Hotline: 1900 1886</span>
+    <span>|</span>
+    <span>Tiếng Việt ▾</span>
+    <span>|</span>
+    <span>Đăng nhập / Đăng ký</span>
   </div>
-</header>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-content">
-    <h1>Bay cùng VietJet</h1>
-    <p>Giá vé tốt nhất mỗi ngày</p>
-  </div>
-  <!-- SEARCH BOX -->
-  <div class="search-box">
-    <div class="trip-tabs">
-      <button class="trip-tab active">Một chiều</button>
-      <button class="trip-tab">Khứ hồi</button>
-      <button class="trip-tab">Nhiều chặng</button>
-    </div>
-    <div class="search-row">
-      <div class="search-field">
-        <label>Điểm đi</label>
-        <input type="text" value="Hà Nội (HAN)" />
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-viet">Viet</span><span class="logo-jet">Jet</span>
+        <span class="logo-air">Air</span>
       </div>
-      <button class="swap-btn">⇄</button>
-      <div class="search-field">
-        <label>Điểm đến</label>
-        <input type="text" value="TP. Hồ Chí Minh (SGN)" />
-      </div>
-      <div class="search-field">
-        <label>Ngày đi</label>
-        <input type="date" value="2026-04-25" />
-      </div>
-      <div class="search-field">
-        <label>Hành khách</label>
-        <input type="text" value="1 Người lớn" />
-      </div>
-      <button class="search-btn" onclick="window.location.href='index.html'">TÌM CHUYẾN BAY</button>
+      <nav class="nav">
+        <a href="index.html" class="nav-link active">Đặt vé</a>
+        <a href="#" class="nav-link">Check-in</a>
+        <a href="#" class="nav-link">Quản lý đặt chỗ</a>
+        <a href="#" class="nav-link">Hành lý</a>
+        <a href="#" class="nav-link">SkyBoss</a>
+      </nav>
     </div>
-  </div>
-</section>
+  </header>
 
-<!-- FLIGHT RESULTS -->
-<main class="main">
-  <div class="results-header">
-    <div>
-      <h2>HAN → SGN</h2>
-      <span class="results-date">Thứ Sáu, 25/04/2026 · 2 chuyến bay</span>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Bay cùng VietJet</h1>
+      <p>Giá vé tốt nhất mỗi ngày</p>
     </div>
-    <div class="sort-bar">
-      <span>Sắp xếp:</span>
-      <button class="sort-btn active">Giờ khởi hành</button>
-      <button class="sort-btn">Giá thấp nhất</button>
-      <button class="sort-btn">Thời gian bay</button>
-    </div>
-  </div>
-
-  <!-- Fare class legend -->
-  <div class="fare-legend">
-    <div class="fare-chip eco">ECO</div>
-    <div class="fare-chip skyboss">SKYBOSS</div>
-    <div class="fare-chip deluxe">DELUXE</div>
-  </div>
-
-  <!-- FLIGHT CARDS -->
-  <div id="flight-list">
-
-    <div class="flight-card" onclick="selectFlight('VJ123')">
-      <div class="flight-airline">
-        <div class="airline-logo">VJ</div>
-        <div>
-          <div class="flight-num">VJ 123</div>
-          <div class="flight-aircraft">Airbus A321</div>
+    <!-- SEARCH BOX -->
+    <div class="search-box">
+      <div class="trip-tabs">
+        <button class="trip-tab active">Một chiều</button>
+        <button class="trip-tab">Khứ hồi</button>
+        <button class="trip-tab">Nhiều chặng</button>
+      </div>
+      <div class="search-row">
+        <div class="search-field">
+          <label>Điểm đi</label>
+          <input type="text" value="Hà Nội (HAN)" />
         </div>
-      </div>
-      <div class="flight-times">
-        <div class="time-block">
-          <div class="time">08:00</div>
-          <div class="airport">HAN</div>
+        <button class="swap-btn">⇄</button>
+        <div class="search-field">
+          <label>Điểm đến</label>
+          <input type="text" value="TP. Hồ Chí Minh (SGN)" />
         </div>
-        <div class="duration-block">
-          <div class="duration-line">
-            <div class="dot"></div>
-            <div class="line"></div>
-            <div class="plane-icon">✈</div>
-            <div class="line"></div>
-            <div class="dot"></div>
+        <div class="search-field">
+          <label>Ngày đi</label>
+          <input type="date" value="2026-04-25" />
+        </div>
+        <div class="search-field">
+          <label>Hành khách</label>
+          <input type="text" value="1 Người lớn" />
+        </div>
+        <button class="search-btn" onclick="window.location.href='index.html'">TÌM CHUYẾN BAY</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FLIGHT RESULTS -->
+  <main class="main">
+    <div class="results-header">
+      <div>
+        <h2>HAN → SGN</h2>
+        <span class="results-date">Thứ Sáu, 25/04/2026 · 2 chuyến bay</span>
+      </div>
+      <div class="sort-bar">
+        <span>Sắp xếp:</span>
+        <button class="sort-btn active">Giờ khởi hành</button>
+        <button class="sort-btn">Giá thấp nhất</button>
+        <button class="sort-btn">Thời gian bay</button>
+      </div>
+    </div>
+
+    <!-- Fare class legend -->
+    <div class="fare-legend">
+      <div class="fare-chip eco">ECO</div>
+      <div class="fare-chip skyboss">SKYBOSS</div>
+      <div class="fare-chip deluxe">DELUXE</div>
+    </div>
+
+    <!-- FLIGHT CARDS -->
+    <div id="flight-list">
+
+      <div class="flight-card" onclick="selectFlight('VJ123')">
+        <div class="flight-airline">
+          <div class="airline-logo">VJ</div>
+          <div>
+            <div class="flight-num">VJ 123</div>
+            <div class="flight-aircraft">Airbus A321</div>
           </div>
-          <div class="duration-label">2 giờ 10 phút · Bay thẳng</div>
         </div>
-        <div class="time-block">
-          <div class="time">10:10</div>
-          <div class="airport">SGN</div>
-        </div>
-      </div>
-      <div class="flight-fares">
-        <div class="fare-option eco-fare">
-          <div class="fare-label">ECO</div>
-          <div class="fare-price">1,200,000<span>đ</span></div>
-          <div class="fare-avail">Còn 9 chỗ</div>
-        </div>
-        <div class="fare-option deluxe-fare">
-          <div class="fare-label">DELUXE</div>
-          <div class="fare-price">1,800,000<span>đ</span></div>
-          <div class="fare-avail">Còn 4 chỗ</div>
-        </div>
-        <div class="fare-option skyboss-fare">
-          <div class="fare-label">SKYBOSS</div>
-          <div class="fare-price">3,200,000<span>đ</span></div>
-          <div class="fare-avail">Còn 2 chỗ</div>
-        </div>
-      </div>
-      <div class="flight-action">
-        <button class="select-btn" onclick="event.stopPropagation(); selectFlight('VJ123')">CHỌN</button>
-      </div>
-    </div>
-
-    <div class="flight-card" onclick="selectFlight('VJ125')">
-      <div class="flight-airline">
-        <div class="airline-logo">VJ</div>
-        <div>
-          <div class="flight-num">VJ 125</div>
-          <div class="flight-aircraft">Airbus A321</div>
-        </div>
-      </div>
-      <div class="flight-times">
-        <div class="time-block">
-          <div class="time">14:00</div>
-          <div class="airport">HAN</div>
-        </div>
-        <div class="duration-block">
-          <div class="duration-line">
-            <div class="dot"></div>
-            <div class="line"></div>
-            <div class="plane-icon">✈</div>
-            <div class="line"></div>
-            <div class="dot"></div>
+        <div class="flight-times">
+          <div class="time-block">
+            <div class="time">08:00</div>
+            <div class="airport">HAN</div>
           </div>
-          <div class="duration-label">2 giờ 10 phút · Bay thẳng</div>
+          <div class="duration-block">
+            <div class="duration-line">
+              <div class="dot"></div>
+              <div class="line"></div>
+              <div class="plane-icon">✈</div>
+              <div class="line"></div>
+              <div class="dot"></div>
+            </div>
+            <div class="duration-label">2 giờ 10 phút · Bay thẳng</div>
+          </div>
+          <div class="time-block">
+            <div class="time">10:10</div>
+            <div class="airport">SGN</div>
+          </div>
         </div>
-        <div class="time-block">
-          <div class="time">16:10</div>
-          <div class="airport">SGN</div>
+        <div class="flight-fares">
+          <div class="fare-option eco-fare">
+            <div class="fare-label">ECO</div>
+            <div class="fare-price">1,200,000<span>đ</span></div>
+            <div class="fare-avail">Còn 9 chỗ</div>
+          </div>
+          <div class="fare-option deluxe-fare">
+            <div class="fare-label">DELUXE</div>
+            <div class="fare-price">1,800,000<span>đ</span></div>
+            <div class="fare-avail">Còn 4 chỗ</div>
+          </div>
+          <div class="fare-option skyboss-fare">
+            <div class="fare-label">SKYBOSS</div>
+            <div class="fare-price">3,200,000<span>đ</span></div>
+            <div class="fare-avail">Còn 2 chỗ</div>
+          </div>
+        </div>
+        <div class="flight-action">
+          <button class="select-btn" onclick="event.stopPropagation(); selectFlight('VJ123')">CHỌN</button>
         </div>
       </div>
-      <div class="flight-fares">
-        <div class="fare-option eco-fare">
-          <div class="fare-label">ECO</div>
-          <div class="fare-price">1,500,000<span>đ</span></div>
-          <div class="fare-avail">Còn 5 chỗ</div>
+
+      <div class="flight-card" onclick="selectFlight('VJ125')">
+        <div class="flight-airline">
+          <div class="airline-logo">VJ</div>
+          <div>
+            <div class="flight-num">VJ 125</div>
+            <div class="flight-aircraft">Airbus A321</div>
+          </div>
         </div>
-        <div class="fare-option deluxe-fare">
-          <div class="fare-label">DELUXE</div>
-          <div class="fare-price">2,100,000<span>đ</span></div>
-          <div class="fare-avail">Còn 3 chỗ</div>
+        <div class="flight-times">
+          <div class="time-block">
+            <div class="time">14:00</div>
+            <div class="airport">HAN</div>
+          </div>
+          <div class="duration-block">
+            <div class="duration-line">
+              <div class="dot"></div>
+              <div class="line"></div>
+              <div class="plane-icon">✈</div>
+              <div class="line"></div>
+              <div class="dot"></div>
+            </div>
+            <div class="duration-label">2 giờ 10 phút · Bay thẳng</div>
+          </div>
+          <div class="time-block">
+            <div class="time">16:10</div>
+            <div class="airport">SGN</div>
+          </div>
         </div>
-        <div class="fare-option skyboss-fare">
-          <div class="fare-label">SKYBOSS</div>
-          <div class="fare-price">3,500,000<span>đ</span></div>
-          <div class="fare-avail">Còn 1 chỗ</div>
+        <div class="flight-fares">
+          <div class="fare-option eco-fare">
+            <div class="fare-label">ECO</div>
+            <div class="fare-price">1,500,000<span>đ</span></div>
+            <div class="fare-avail">Còn 5 chỗ</div>
+          </div>
+          <div class="fare-option deluxe-fare">
+            <div class="fare-label">DELUXE</div>
+            <div class="fare-price">2,100,000<span>đ</span></div>
+            <div class="fare-avail">Còn 3 chỗ</div>
+          </div>
+          <div class="fare-option skyboss-fare">
+            <div class="fare-label">SKYBOSS</div>
+            <div class="fare-price">3,500,000<span>đ</span></div>
+            <div class="fare-avail">Còn 1 chỗ</div>
+          </div>
+        </div>
+        <div class="flight-action">
+          <button class="select-btn" onclick="event.stopPropagation(); selectFlight('VJ125')">CHỌN</button>
         </div>
       </div>
-      <div class="flight-action">
-        <button class="select-btn" onclick="event.stopPropagation(); selectFlight('VJ125')">CHỌN</button>
+
+    </div>
+  </main>
+
+  <!-- PROMO BANNER -->
+  <section class="promo-section">
+    <div class="promo-grid">
+      <div class="promo-card">
+        <div class="promo-icon">🎒</div>
+        <div class="promo-title">Hành lý ký gửi</div>
+        <div class="promo-desc">Mua thêm hành lý với giá ưu đãi khi đặt vé</div>
+      </div>
+      <div class="promo-card">
+        <div class="promo-icon">🍜</div>
+        <div class="promo-title">Suất ăn trên máy bay</div>
+        <div class="promo-desc">Đặt trước suất ăn yêu thích của bạn</div>
+      </div>
+      <div class="promo-card">
+        <div class="promo-icon">🏨</div>
+        <div class="promo-title">Khách sạn & resort</div>
+        <div class="promo-desc">Combo vé máy bay + khách sạn tiết kiệm hơn</div>
+      </div>
+      <div class="promo-card">
+        <div class="promo-icon">🚗</div>
+        <div class="promo-title">Thuê xe du lịch</div>
+        <div class="promo-desc">Di chuyển thuận tiện tại điểm đến</div>
       </div>
     </div>
+  </section>
 
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">VietJet Air</div>
+      <div class="footer-links">
+        <a href="#">Về chúng tôi</a>
+        <a href="#">Điều khoản sử dụng</a>
+        <a href="./privacy.html">Yêu cầu xử lý DLCN</a>
+        <a href="#">Chính sách bảo mật</a>
+        <a href="#">Liên hệ</a>
+      </div>
+      <div class="footer-copy">© 2026 VietJet Air. Bản quyền thuộc về VietJet Air.</div>
+    </div>
+  </footer>
+
+  <div id="consent-popup"
+    style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:9999; justify-content:center; align-items:center;">
+    <div style="background:white; padding:20px; border-radius:12px; width:90%; max-width:800px; position:relative;">
+      <button onclick="document.getElementById('consent-popup').style.display='none'"
+        style="position:absolute; top:10px; right:10px; border:none; background:none; font-size:20px; cursor:pointer;">&times;</button>
+
+      <h3>Vui lòng xác nhận đồng ý</h3>
+      <iframe width="100%" height="400"
+        src="https://uat.datatrust.one/consent/839275/4164/edc24216-4164-4141-b7a3-ed800bd3db47" frameborder="0"
+        allow="gyroscope; web-share" allowfullscreen>
+      </iframe>
+
+      <button onclick="confirmConsent()"
+        style="width:100%; background:#d91c2b; color:white; border:none; padding:12px; margin-top:10px; cursor:pointer; font-weight:bold;">Hoàn
+        thành</button>
+    </div>
   </div>
-</main>
 
-<!-- PROMO BANNER -->
-<section class="promo-section">
-  <div class="promo-grid">
-    <div class="promo-card">
-      <div class="promo-icon">🎒</div>
-      <div class="promo-title">Hành lý ký gửi</div>
-      <div class="promo-desc">Mua thêm hành lý với giá ưu đãi khi đặt vé</div>
-    </div>
-    <div class="promo-card">
-      <div class="promo-icon">🍜</div>
-      <div class="promo-title">Suất ăn trên máy bay</div>
-      <div class="promo-desc">Đặt trước suất ăn yêu thích của bạn</div>
-    </div>
-    <div class="promo-card">
-      <div class="promo-icon">🏨</div>
-      <div class="promo-title">Khách sạn & resort</div>
-      <div class="promo-desc">Combo vé máy bay + khách sạn tiết kiệm hơn</div>
-    </div>
-    <div class="promo-card">
-      <div class="promo-icon">🚗</div>
-      <div class="promo-title">Thuê xe du lịch</div>
-      <div class="promo-desc">Di chuyển thuận tiện tại điểm đến</div>
-    </div>
-  </div>
-</section>
+  <script src="https://uat-api.datatrust.one/assets/js/cookie-banner.js" data-source="75435414359034780"></script>
+  <script>
+    function proceedToDetail(id) {
+      sessionStorage.setItem('selectedFlight', id);
+      window.location.href = 'detail.html';
+    }
+    function selectFlight(id) {
+      const hasConsented = localStorage.getItem('user_consent_status');
+      if (hasConsented === 'true') {
+        proceedToDetail(id);
+      } else {
+        window.pendingFlightId = id;
+        document.getElementById('consent-popup').style.display = 'flex';
+      }
+    }
 
+    function confirmConsent() {
+      localStorage.setItem('user_consent_status', 'true');
+      document.getElementById('consent-popup').style.display = 'none';
 
-<footer class="footer">
-  <div class="footer-inner">
-    <div class="footer-logo">VietJet Air</div>
-    <div class="footer-links">
-      <a href="#">Về chúng tôi</a>
-      <a href="#">Điều khoản sử dụng</a>
-      <a href="./privacy.html">Yêu cầu xử lý DLCN</a>
-      <a href="#">Chính sách bảo mật</a>
-      <a href="#">Liên hệ</a>
-    </div>
-    <div class="footer-copy">© 2026 VietJet Air. Bản quyền thuộc về VietJet Air.</div>
-  </div>
-</footer>
+      if (window.pendingFlightId) {
+        proceedToDetail(window.pendingFlightId);
+      }
+    }
 
-<div id="consent-popup" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:9999; justify-content:center; align-items:center;">
-  <div style="background:white; padding:20px; border-radius:12px; width:90%; max-width:800px; position:relative;">
-    <button onclick="document.getElementById('consent-popup').style.display='none'" style="position:absolute; top:10px; right:10px; border:none; background:none; font-size:20px; cursor:pointer;">&times;</button>
-    
-    <h3>Vui lòng xác nhận đồng ý</h3>
-    <iframe width="100%" height="400" 
-            src="https://uat.datatrust.one/consent/839275/4164/edc24216-4164-4141-b7a3-ed800bd3db47" 
-            frameborder="0" allow="gyroscope; web-share" allowfullscreen>
-    </iframe>
-    
-    <button onclick="confirmConsent()" style="width:100%; background:#d91c2b; color:white; border:none; padding:12px; margin-top:10px; cursor:pointer; font-weight:bold;">ĐÃ ĐỒNG Ý</button>
-  </div>
-</div>
-
-<script src="https://uat-api.datatrust.one/assets/js/cookie-banner.js" data-source="75435414359034780"></script>
-<script>
-// Hàm chuyển trang chính thức
-function proceedToDetail(id) {
-  sessionStorage.setItem('selectedFlight', id);
-  window.location.href = 'detail.html';
-}
-
-// Hàm xử lý khi chọn chuyến bay
-function selectFlight(id) {
-  // Kiểm tra xem đã từng đồng ý chưa
-  const hasConsented = localStorage.getItem('user_consent_status');
-
-  if (hasConsented === 'true') {
-    // Đã đồng ý rồi -> Chuyển trang ngay
-    proceedToDetail(id);
-  } else {
-    // Chưa đồng ý -> Lưu tạm ID vào biến toàn cục và hiện popup
-    window.pendingFlightId = id;
-    document.getElementById('consent-popup').style.display = 'flex';
-  }
-}
-
-// Hàm xác nhận khi ấn "Đồng ý" trong Popup
-function confirmConsent() {
-  localStorage.setItem('user_consent_status', 'true');
-  document.getElementById('consent-popup').style.display = 'none';
-  
-  // Chuyển tới chuyến bay đã chọn trước đó
-  if (window.pendingFlightId) {
-    proceedToDetail(window.pendingFlightId);
-  }
-}
-
-// Giữ nguyên logic cũ của bạn
-document.querySelectorAll('.trip-tab').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.trip-tab').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-  });
-});
-document.querySelectorAll('.sort-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-  });
-});
-</script>
+    document.querySelectorAll('.trip-tab').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.trip-tab').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+    document.querySelectorAll('.sort-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+  </script>
 </body>
+
 </html>
