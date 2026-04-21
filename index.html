@@ -272,12 +272,14 @@
       } else {
         window.pendingFlightId = id;
         document.getElementById('consent-popup').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
       }
     }
 
     function confirmConsent() {
       localStorage.setItem('user_consent_status', 'true');
       document.getElementById('consent-popup').style.display = 'none';
+      document.body.style.overflow = '';
       if (window.pendingFlightId) {
         proceedToDetail(window.pendingFlightId);
       }
