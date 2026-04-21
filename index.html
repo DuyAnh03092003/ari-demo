@@ -262,18 +262,13 @@
 
     </div>
   </div>
-
- <script>
-Object.defineProperty(document, 'currentScript', {
-  get: function () {
-    return document.querySelector('script[data-source]');
-  }
-});
-</script>
-
+  
 <script 
   src="https://irm-demo.datatrust.one/assets/js/cookie-banner.js" 
   data-source="75435415357457909">
+</script>
+  <script>
+    console.log("Check từ HTML:", document.querySelector('script[data-source]').getAttribute('data-source'));
 </script>
   <script>
     function selectFlight(id) {
