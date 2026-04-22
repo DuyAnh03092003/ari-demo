@@ -182,11 +182,7 @@
     }
   </script>
   <script>
-    console.log("STEP 0: FILE LOADED");
     document.addEventListener("DOMContentLoaded", () => {
-      console.log("STEP 1: DOM READY");
-      console.log("STEP 2: selectedFlight =", sessionStorage.getItem('selectedFlight'));
-      console.log("STEP 2: bookingSummary =", sessionStorage.getItem('bookingSummary'));
       const flights = {
         'VJ123': { num: 'VJ 123', price: '1,200,000đ', total: '1,380,000đ', time: '08:00 → 10:10' },
         'VJ125': { num: 'VJ 125', price: '1,500,000đ', total: '1,680,000đ', time: '14:00 → 16:10' }
