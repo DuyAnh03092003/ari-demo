@@ -363,26 +363,24 @@
       const fullName = document.querySelector('input[placeholder="VD: NGUYEN VAN A"]').value;
       const email = document.querySelector('input[type="email"]').value;
       const phone = document.querySelector('input[type="tel"]').value;
-      const baggage = document.querySelector('input[name="baggage"]:checked').value;
 
       if (!fullName || !email || !phone) {
         alert("Vui lòng điền đầy đủ thông tin hành khách.");
         return;
       }
 
-      // Cấu trúc payload theo yêu cầu Datatrust
       const payload = {
         campaign_name: "Lấy sự đồng ý sử dụng dữ liệu khách hàng",
         datas: [
           {
-            subject_source_id: "",
+            subject_source_id: "76279840333913842",
             subject_name: fullName,
             subject_phone: phone,
             subject_email: email,
             consent_source_id: "72620599152940108",
             service_source_id: "75998365289590102",
             create_time: Date.now(),
-            consent_status: "in_progress",
+            consent_status: "agree_all",
             assignees: [
               {
                 name: "Duy Anh",
@@ -407,18 +405,22 @@
 
         const url = "https://apis-demo.datatrust.one/72902099310730275/integration/consent";
 
+        const formData = new FormData();
+        formData.append("payload", JSON.stringify(payload));
+
         const response = await fetch(url, {
           method: 'POST',
           headers: {
-            'Content-Type': 'multipart/form-data',
-            'Authorization': 'eyJraWQiOiIxLTUxZmEyNTViLTAxN2QtNDVmYS04YzdkLTI1OGYxZGVjMDhlMyIsImFsZyI6IlJTNTEyIiwidHlwIjoiSldUIn0.eyJpc3MiOiJEYXRhIFRydXN0IEludGVyZ3JhdGlvbiAtIDEiLCJzdWIiOiJUb2tlbiBBY2Nlc3MgSW50ZWdyYXRpb24iLCJleHAiOjE3OTIzNzQyOTcsIm5iZiI6MTc3NjgyMjI4NywiaWF0IjoxNzc2ODIyMjg3LCJzY29wZXMiOnsiYXBpcyI6WyJ3cml0ZSIsInJlYWQiLCJkZWxldGUiXX0sInVzZXJJZCI6IjcyMzM5MTgxNDQyMjE4NjAzIiwid29ya3NwYWNlSWQiOiI3MjkwMjA5OTMxMDczMDI3NSJ9.DUl2muVpKOAn1pNYtMB4eRrWPvcjoqoTjerAvnTRXYGhcg5BaNkpl_OqiEWyT9rTPnAlwjeLo5ljkXeGhyxzzePncYP6wdxPpiq0yCmM1aonP0kEqGgD1tn4ekFyCyW2gzmuc0l0nuiMqBCKhek_pYC6nYzVw9tsRTV1GLFoLVU'
+            Authorization: 'eyJraWQiOiIxLTUxZmEyNTViLTAxN2QtNDVmYS04YzdkLTI1OGYxZGVjMDhlMyIsImFsZyI6IlJTNTEyIiwidHlwIjoiSldUIn0.eyJpc3MiOiJEYXRhIFRydXN0IEludGVyZ3JhdGlvbiAtIDEiLCJzdWIiOiJUb2tlbiBBY2Nlc3MgSW50ZWdyYXRpb24iLCJleHAiOjE3OTIzNzQyOTcsIm5iZiI6MTc3NjgyMjI4NywiaWF0IjoxNzc2ODIyMjg3LCJzY29wZXMiOnsiYXBpcyI6WyJ3cml0ZSIsInJlYWQiLCJkZWxldGUiXX0sInVzZXJJZCI6IjcyMzM5MTgxNDQyMjE4NjAzIiwid29ya3NwYWNlSWQiOiI3MjkwMjA5OTMxMDczMDI3NSJ9.DUl2muVpKOAn1pNYtMB4eRrWPvcjoqoTjerAvnTRXYGhcg5BaNkpl_OqiEWyT9rTPnAlwjeLo5ljkXeGhyxzzePncYP6wdxPpiq0yCmM1aonP0kEqGgD1tn4ekFyCyW2gzmuc0l0nuiMqBCKhek_pYC6nYzVw9tsRTV1GLFoLVU'
           },
-          body: JSON.stringify(payload)
+          body: formData
         });
 
         if (response.ok) {
           window.location.href = 'success.html';
         } else {
+          const text = await response.text();
+          console.error(text);
           throw new Error('Lỗi từ máy chủ Datatrust');
         }
       } catch (error) {
@@ -428,7 +430,6 @@
         this.disabled = false;
       }
     });
-
     function closePopup() {
       document.getElementById('terms-popup').style.display = 'none';
     }
