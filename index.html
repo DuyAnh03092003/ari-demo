@@ -261,20 +261,6 @@
     </div>
   </div>
   <script>
-  const path = window.location.pathname;
-
-  if (path === "/") {
-    // giả lập chuyển sang /vi
-    window.history.replaceState({}, "", "/vi");
-  }
-
-  if (path === "/vi") {
-    console.log("Đang ở chế độ tiếng Việt");
-    // bạn có thể gọi hàm switch language ở đây
-    switchBannerLanguage?.("vi");
-  }
-</script>
-  <script>
     function selectFlight(id) {
         // Lưu ID chuyến bay vào sessionStorage rồi chuyển trang
         sessionStorage.setItem('selectedFlight', id);
