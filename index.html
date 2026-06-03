@@ -28,6 +28,13 @@
       style="cursor: pointer; border: none; background: transparent; font-size: 13px; font-weight: bold; color: inherit; outline: none; padding: 2px 5px;">
       <option value="vi" style="color: #333;">VN</option>
       <option value="en" style="color: #333;">EN</option>
+      <option value="th" style="color: #333;">TH (Thái Lan)</option>
+      <option value="ko" style="color: #333;">KO (Hàn Quốc)</option>
+      <option value="zh-CN" style="color: #333;">ZH-CN (Trung Quốc - Giản thể)</option>
+      <option value="zh-TW" style="color: #333;">ZH-TW (Đài Loan - Phồn thể)</option>
+      <option value="ja" style="color: #333;">JA (Nhật Bản)</option>
+      <option value="ru" style="color: #333;">RU (Nga)</option>
+      <option value="cs" style="color: #333;">CS (Cộng hòa Séc)</option>
     </select>
 
     <span>|</span>
@@ -297,6 +304,7 @@
   </script>
 
   <script>
+  // Khai báo hàm chuẩn cú pháp truyền thống (Được tự động Hoisting để né lỗi crash hệ thống)
   function changeUrlSuffix(langCode) {
     let currentPath = window.location.pathname;
 
@@ -307,14 +315,28 @@
 
     let newPath = '';
 
-    // Nếu URL hiện tại đã kết thúc bằng /vi hoặc /en, tiến hành thay thế nó
+    // Sử dụng chuỗi if else tường minh và tự động tính độ dài để cắt đuôi chính xác
     if (currentPath.endsWith('/vi')) {
       newPath = currentPath.slice(0, -3) + '/' + langCode;
     } else if (currentPath.endsWith('/en')) {
       newPath = currentPath.slice(0, -3) + '/' + langCode;
+    } else if (currentPath.endsWith('/th')) {
+      newPath = currentPath.slice(0, -3) + '/' + langCode;
+    } else if (currentPath.endsWith('/ko')) {
+      newPath = currentPath.slice(0, -3) + '/' + langCode;
+    } else if (currentPath.endsWith('/zh-CN')) {
+      newPath = currentPath.slice(0, -6) + '/' + langCode; // zh-CN có 5 ký tự nên lùi 6 bước (tính cả dấu /)
+    } else if (currentPath.endsWith('/zh-TW')) {
+      newPath = currentPath.slice(0, -6) + '/' + langCode; // zh-TW có 5 ký tự nên lùi 6 bước (tính cả dấu /)
+    } else if (currentPath.endsWith('/ja')) {
+      newPath = currentPath.slice(0, -3) + '/' + langCode;
+    } else if (currentPath.endsWith('/ru')) {
+      newPath = currentPath.slice(0, -3) + '/' + langCode;
+    } else if (currentPath.endsWith('/cs')) {
+      newPath = currentPath.slice(0, -3) + '/' + langCode;
     } else {
-      // Nếu chưa có hậu tố ngôn ngữ, giữ nguyên URL cũ và nối thêm /vi hoặc /en vào cuối
-      newPath = currentPath + '/' + langCode;
+      // Nếu chưa có hậu tố ngôn ngữ nào, giữ nguyên URL cũ và nối thêm vào cuối
+      newPath = currentPath + '/' + langCode + '/';
     }
 
     // Bảo toàn các tham số query (?search=...) và hash (#section) nếu có
@@ -326,16 +348,30 @@
     console.log("URL mới đã được cập nhật thành: " + finalUrl);
   }
 
-  // Đồng bộ trạng thái hiển thị của thẻ select khi vừa tải trang
+  // Đồng bộ trạng thái hiển thị của thẻ select khi vừa tải trang bằng if else
   document.addEventListener("DOMContentLoaded", function () {
     const currentPath = window.location.pathname;
     const langSelect = document.getElementById('lang-select');
+    if (!langSelect) return;
 
-    // Nếu đường dẫn hiện tại kết thúc bằng /en thì chọn 'en', ngược lại mặc định 'vi'
     if (currentPath.endsWith('/en') || currentPath.endsWith('/en/')) {
       langSelect.value = 'en';
+    } else if (currentPath.endsWith('/th') || currentPath.endsWith('/th/')) {
+      langSelect.value = 'th';
+    } else if (currentPath.endsWith('/ko') || currentPath.endsWith('/ko/')) {
+      langSelect.value = 'ko';
+    } else if (currentPath.endsWith('/zh-CN') || currentPath.endsWith('/zh-CN/')) {
+      langSelect.value = 'zh-CN';
+    } else if (currentPath.endsWith('/zh-TW') || currentPath.endsWith('/zh-TW/')) {
+      langSelect.value = 'zh-TW';
+    } else if (currentPath.endsWith('/ja') || currentPath.endsWith('/ja/')) {
+      langSelect.value = 'ja';
+    } else if (currentPath.endsWith('/ru') || currentPath.endsWith('/ru/')) {
+      langSelect.value = 'ru';
+    } else if (currentPath.endsWith('/cs') || currentPath.endsWith('/cs/')) {
+      langSelect.value = 'cs';
     } else {
-      langSelect.value = 'vi';
+      langSelect.value = 'vi'; // Mặc định hiển thị VN nếu không trùng hậu tố nào
     }
   });
 </script>
