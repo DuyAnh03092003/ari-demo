@@ -421,48 +421,19 @@
               <p id="parental-desc">Theo quy định pháp luật, việc xử lý dữ liệu của trẻ em cần có sự đồng ý của cha/mẹ
                 hoặc người giám hộ hợp pháp.</p>
 
-              <div class="guardian-fields">
-                <div class="guardian-field">
-                  <label>Họ tên người giám hộ *</label>
-                  <input type="text" id="pg-name" placeholder="NGUYEN VAN B" style="text-transform:uppercase"
-                    oninput="updateParentalConfirm()" />
-                </div>
-                <div class="guardian-field">
-                  <label>Quan hệ với trẻ *</label>
-                  <select id="pg-relation" onchange="updateParentalConfirm()">
-                    <option value="">-- Chọn quan hệ --</option>
-                    <option>Cha</option>
-                    <option>Mẹ</option>
-                    <option>Người giám hộ hợp pháp</option>
-                  </select>
-                </div>
-                <div class="guardian-field">
-                  <label>Số ĐT người giám hộ *</label>
-                  <input type="tel" id="pg-phone" placeholder="090xxxxxxx" oninput="updateParentalConfirm()" />
-                </div>
-                <div class="guardian-field">
-                  <label>Số CMND/CCCD/Hộ chiếu *</label>
-                  <input type="text" id="pg-id" placeholder="Số giấy tờ xác minh" oninput="updateParentalConfirm()" />
-                </div>
-                <input type="hidden" id="pg-email" value="guardian@email.com" />
-              </div>
-
               <div class="parental-confirm">
                 <input type="checkbox" id="pg-confirm" onchange="updateParentalConfirm()" />
                 <label for="pg-confirm">
-                  Tôi xác nhận là cha/mẹ hoặc người giám hộ hợp pháp và <strong>đồng ý cho VietJet Air thu thập, xử lý
-                    dữ liệu cá nhân của trẻ</strong> để phục vụ dịch vụ chuyến bay.
+                  Tôi xác nhận là cha/mẹ hoặc người giám hộ hợp pháp và
+                  <strong>đồng ý cho VietJet Air thu thập, xử lý dữ liệu cá nhân của trẻ</strong>
+                  để phục vụ dịch vụ chuyến bay.
                 </label>
               </div>
 
-              <div class="parental-upload-zone" onclick="document.getElementById('pg-file-input').click()">
-                <input type="file" id="pg-file-input" multiple
-                  accept=".pdf,.jpg,.jpeg,.png,.gif,.bmp,.webp,.doc,.docx,.xls,.xlsx"
-                  onchange="handleParentalFileUpload(this)" />
-                <div class="puz-text">📎 Tải tài liệu minh chứng quan hệ <span
-                    style="font-weight:400;color:#6b7280;font-style:italic">(Không bắt buộc)</span></div>
-                <div class="puz-hint">Giấy khai sinh, quyết định giám hộ... (Có thể cung cấp bổ sung khi thực hiện
-                  chuyến bay)</div>
+              <div style="margin-top:12px;">
+                <button type="button" class="btn-secondary" onclick="openGuardianPopup()">
+                  📎 Cung cấp thông tin & minh chứng (không bắt buộc)
+                </button>
               </div>
               <div class="parental-file-preview" id="pg-file-preview"></div>
 
@@ -841,22 +812,39 @@
     let isEU = false;
     let minorAge = 0;
     let parentVerified = false;
-
     function resetParentalForm() {
-      parentalFiles = [];
+      // Reset trạng thái xác thực
       parentVerified = false;
-      const prev = document.getElementById('pg-file-preview');
-      if (prev) { prev.style.display = 'none'; prev.innerHTML = ''; }
+
+      // Reset checkbox xác nhận
+      const cb = document.getElementById('pg-confirm');
+      if (cb) cb.checked = false;
+
+      // Reset dữ liệu popup (không bắt buộc)
       ['pg-name', 'pg-id', 'pg-phone'].forEach(id => {
         const el = document.getElementById(id);
         if (el) el.value = '';
       });
+
       const rel = document.getElementById('pg-relation');
       if (rel) rel.value = '';
-      const cb = document.getElementById('pg-confirm');
-      if (cb) cb.checked = false;
-    }
 
+      // Reset file minh chứng
+      parentalFiles = [];
+      const prev = document.getElementById('pg-file-preview');
+      if (prev) {
+        prev.innerHTML = '';
+        prev.style.display = 'none';
+      }
+
+      const fileInput = document.getElementById('pg-file-input');
+      if (fileInput) fileInput.value = '';
+
+      // Đóng popup nếu đang mở
+      const popup = document.getElementById('guardian-popup');
+      if (popup) popup.style.display = 'none';
+      document.body.style.overflow = '';
+    }
     // ─── Parental inline file upload ──────────────────────────────────────────
     let parentalFiles = [];
     function handleParentalFileUpload(input) {
@@ -990,80 +978,67 @@
     // ─── Consent checkbox logic ────────────────────────────────────────────────
     // 1. Hàm kiểm tra điều kiện và kích hoạt/vô hiệu hóa nút TIẾP TỤC
     // ====== ĐỊNH NGHĨA HÀM XÁC THỰC NGƯỜI GIÁM HỘ (BỊ THIẾU) ======
-function updateParentalConfirm() {
-  const pgName = document.getElementById('pg-name') ? document.getElementById('pg-name').value.trim() : '';
-  const pgRelation = document.getElementById('pg-relation') ? document.getElementById('pg-relation').value : '';
-  const pgPhone = document.getElementById('pg-phone') ? document.getElementById('pg-phone').value.trim() : '';
-  const pgId = document.getElementById('pg-id') ? document.getElementById('pg-id').value.trim() : '';
-  const pgConfirm = document.getElementById('pg-confirm') ? document.getElementById('pg-confirm').checked : false;
-
-  // Nếu điền đầy đủ các trường bắt buộc của người giám hộ VÀ đã tích chọn đồng ý
-  if (pgName && pgRelation && pgPhone && pgId && pgConfirm) {
-    parentVerified = true;
-  } else {
-    parentVerified = false;
-  }
-
-  // Chạy lại hàm kiểm tra nút tiếp tục
-  updateContinueBtn();
-}
-
-// ====== HÀM KIỂM TRA ĐIỀU KIỆN ĐỂ MỞ KHÓA NÚT TIẾP TỤC ======
-function updateContinueBtn() {
-  const c1El = document.getElementById('c1');
-  const c2El = document.getElementById('c2');
-  const c3El = document.getElementById('c3');
-  
-  const gdprExtra = document.getElementById('consent-gdpr-extra');
-  // Kiểm tra xem vùng GDPR có đang hiển thị thực tế hay không
-  const gdprRequired = gdprExtra && gdprExtra.style.display !== 'none';
-
-  // Điều kiện Đồng ý Điều khoản (Consent OK): 
-  // Nếu là EU/GDPR -> bắt buộc tích cả c2 và c3. Nếu không -> bắt buộc tích c1.
-  const consentOK = gdprRequired 
-    ? (c2El && c2El.checked && c3El && c3El.checked) 
-    : (c1El && c1El.checked);
-
-  // Điều kiện Người giám hộ (Parental OK):
-  const parentBlock = document.getElementById('parental-block');
-  const parentRequired = parentBlock && parentBlock.style.display !== 'none';
-  const parentOK = parentRequired ? parentVerified : true;
-
-  // Cập nhật trạng thái disabled của nút Tiếp tục
-  const btnContinue = document.getElementById('btn-continue');
-  if (btnContinue) {
-    btnContinue.disabled = !(consentOK && parentOK);
-  }
-}
-
-// ====== LẮNG NGHE SỰ KIỆN KHI TOÀN BỘ TRANG ĐÃ TẢI XONG ======
-document.addEventListener('DOMContentLoaded', () => {
-  // Gắn sự kiện change cho các checkbox điều khoản dữ liệu cá nhân
-  ['c1', 'c2', 'c3'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.addEventListener('change', updateContinueBtn);
-  });
-
-  // Gắn bộ lắng nghe bổ sung cho sự kiện đổi Quốc tịch để reset trạng thái checkbox cũ
-  const nationalityEl = document.getElementById('inp-nationality');
-  if (nationalityEl) {
-    nationalityEl.addEventListener('change', () => {
+    function updateParentalConfirm() {
+      const pgConfirm = document.getElementById('pg-confirm');
+      parentVerified = pgConfirm ? pgConfirm.checked : false;
+      updateContinueBtn();
+    }
+    // ====== HÀM KIỂM TRA ĐIỀU KIỆN ĐỂ MỞ KHÓA NÚT TIẾP TỤC ======
+    function updateContinueBtn() {
       const c1El = document.getElementById('c1');
       const c2El = document.getElementById('c2');
       const c3El = document.getElementById('c3');
-      
-      // Reset toàn bộ checkbox về false khi đổi quốc gia để tránh lưu trạng thái cũ làm sai logic
-      if (c1El) c1El.checked = false;
-      if (c2El) c2El.checked = false;
-      if (c3El) c3El.checked = false;
-      
+
+      const gdprExtra = document.getElementById('consent-gdpr-extra');
+      // Kiểm tra xem vùng GDPR có đang hiển thị thực tế hay không
+      const gdprRequired = gdprExtra && gdprExtra.style.display !== 'none';
+
+      // Điều kiện Đồng ý Điều khoản (Consent OK): 
+      // Nếu là EU/GDPR -> bắt buộc tích cả c2 và c3. Nếu không -> bắt buộc tích c1.
+      const consentOK = gdprRequired
+        ? (c2El && c2El.checked && c3El && c3El.checked)
+        : (c1El && c1El.checked);
+
+      // Điều kiện Người giám hộ (Parental OK):
+      const parentBlock = document.getElementById('parental-block');
+      const parentRequired = parentBlock && parentBlock.style.display !== 'none';
+      const parentOK = parentRequired ? parentVerified : true;
+
+      // Cập nhật trạng thái disabled của nút Tiếp tục
+      const btnContinue = document.getElementById('btn-continue');
+      if (btnContinue) {
+        btnContinue.disabled = !(consentOK && parentOK);
+      }
+    }
+
+    // ====== LẮNG NGHE SỰ KIỆN KHI TOÀN BỘ TRANG ĐÃ TẢI XONG ======
+    document.addEventListener('DOMContentLoaded', () => {
+      // Gắn sự kiện change cho các checkbox điều khoản dữ liệu cá nhân
+      ['c1', 'c2', 'c3'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.addEventListener('change', updateContinueBtn);
+      });
+
+      // Gắn bộ lắng nghe bổ sung cho sự kiện đổi Quốc tịch để reset trạng thái checkbox cũ
+      const nationalityEl = document.getElementById('inp-nationality');
+      if (nationalityEl) {
+        nationalityEl.addEventListener('change', () => {
+          const c1El = document.getElementById('c1');
+          const c2El = document.getElementById('c2');
+          const c3El = document.getElementById('c3');
+
+          // Reset toàn bộ checkbox về false khi đổi quốc gia để tránh lưu trạng thái cũ làm sai logic
+          if (c1El) c1El.checked = false;
+          if (c2El) c2El.checked = false;
+          if (c3El) c3El.checked = false;
+
+          updateContinueBtn();
+        });
+      }
+
+      // Chạy kiểm tra lần đầu tiên phòng trường hợp trình duyệt tự động điền sẵn (Autofill)
       updateContinueBtn();
     });
-  }
-
-  // Chạy kiểm tra lần đầu tiên phòng trường hợp trình duyệt tự động điền sẵn (Autofill)
-  updateContinueBtn();
-});
 
     // ─── Privacy popup ─────────────────────────────────────────────────────────
     function openPrivacyPopup(mode) {
@@ -1167,7 +1142,78 @@ document.addEventListener('DOMContentLoaded', () => {
         this.disabled = false;
       }
     });
+    function openGuardianPopup() {
+      document.getElementById('guardian-popup').style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeGuardianPopup() {
+      document.getElementById('guardian-popup').style.display = 'none';
+      document.body.style.overflow = '';
+    }
+
+    function closeGuardianOverlay(e) {
+      if (e.target === document.getElementById('guardian-popup')) {
+        closeGuardianPopup();
+      }
+    }
   </script>
+
+  <div id="guardian-popup" class="popup-overlay" style="display:none;" onclick="closeGuardianOverlay(event)">
+    <div class="popup-content" style="max-width:600px;">
+      <div class="popup-header">
+        <div class="popup-header-title">
+          Thông tin người giám hộ (không bắt buộc)
+        </div>
+        <button class="close-btn" onclick="closeGuardianPopup()">✕</button>
+      </div>
+
+      <div class="popup-body">
+        <div class="guardian-fields">
+          <div class="guardian-field">
+            <label>Họ tên người giám hộ</label>
+            <input type="text" id="pg-name" placeholder="NGUYEN VAN B" style="text-transform:uppercase" />
+          </div>
+
+          <div class="guardian-field">
+            <label>Quan hệ với trẻ</label>
+            <select id="pg-relation">
+              <option value="">-- Chọn quan hệ --</option>
+              <option>Cha</option>
+              <option>Mẹ</option>
+              <option>Người giám hộ hợp pháp</option>
+            </select>
+          </div>
+
+          <div class="guardian-field">
+            <label>Số điện thoại</label>
+            <input type="tel" id="pg-phone" placeholder="090xxxxxxx" />
+          </div>
+
+          <div class="guardian-field">
+            <label>Số CMND/CCCD/Hộ chiếu</label>
+            <input type="text" id="pg-id" placeholder="Số giấy tờ xác minh" />
+          </div>
+        </div>
+
+        <div class="parental-upload-zone" onclick="document.getElementById('pg-file-input').click()">
+          <input type="file" id="pg-file-input" multiple
+            accept=".pdf,.jpg,.jpeg,.png,.gif,.bmp,.webp,.doc,.docx,.xls,.xlsx"
+            onchange="handleParentalFileUpload(this)" />
+          <div class="puz-text">📎 Tải tài liệu minh chứng</div>
+          <div class="puz-hint">
+            Giấy khai sinh, quyết định giám hộ... (không bắt buộc)
+          </div>
+        </div>
+
+        <div class="parental-file-preview" id="pg-file-preview"></div>
+      </div>
+
+      <div class="popup-footer">
+        <button class="btn-agree" onclick="closeGuardianPopup()">Hoàn tất</button>
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>
