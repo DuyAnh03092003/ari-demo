@@ -1093,8 +1093,8 @@
       this.textContent = 'ĐANG XỬ LÝ...';
       this.disabled = true;
 
-      const TOKEN = 'eyJraWQiOiIxLTdiNTA2Y2UzLWM5NDItNGY2Yy1iNzgzLThkZjY1M2Q5ZTJkMSIsImFsZyI6IlJTNTEyIiwidHlwIjoiSldUIn0.eyJpc3MiOiJWVHJ1c3QgSW50ZWdyYXRpb24gLSAxIiwic3ViIjoiVG9rZW4gQWNjZXNzIEludGVncmF0aW9uIiwiZXhwIjoxNzk2NzEzMTg4LCJuYmYiOjE3ODExNjExNzgsImlhdCI6MTc4MTE2MTE3OCwic2NvcGVzIjp7ImFwaXMiOlsid3JpdGUiLCJyZWFkIiwiZGVsZXRlIl19LCJ1c2VySWQiOiI3MjMzOTE5MjQ2NzcwNzM2OSIsIndvcmtzcGFjZUlkIjoiNzI5MDIxNDIzNjY0MDM4ODAifQ.vP7pz9OENBHPzhffb1kWb4jv5jbARFA9Moy2aI7vt8rosWNSwg3IA4RDu5o80KlLDQzQWZa9-7cOlwCRo0q2V0n3hA_hEnjjbN8dkgqMg0onZ3Klw4NOhG1wBCp38h-FaIPyQZTOCjSoYmSZMO0BKgB7JjgI9A4BYyG2qfWQnqk';
-      const BASE_URL = 'https://vietjet-uat-api.datatrust.one/72902142366403880';
+      const TOKEN = 'eyJraWQiOiIxLWNlOWM2ZDg0LTUzNmMtNGI3ZC1hNGRhLTAyYmM0NGE5MWQxYyIsImFsZyI6IlJTNTEyIiwidHlwIjoiSldUIn0.eyJpc3MiOiJEYXRhIFRydXN0IEludGVyZ3JhdGlvbiAtIDEiLCJzdWIiOiJUb2tlbiBBY2Nlc3MgSW50ZWdyYXRpb24iLCJleHAiOjE3ODgzMTIwODEsIm5iZiI6MTc3Mjc2MDA3MSwiaWF0IjoxNzcyNzYwMDcxLCJzY29wZXMiOnsiYXBpcyI6WyJ3cml0ZSIsInJlYWQiLCJkZWxldGUiXX0sInVzZXJJZCI6IjcyMzM5MTMyMDA2NTI2NjQ5Iiwid29ya3NwYWNlSWQiOiI3MjkwMjA4MTk1OTk0NzcyNyJ9.ZvTAHXDypWDbkuxdeibGwmFBlHVY5f-XuwxlUfExLIoQIVC7-MUOtKppw8RslNYYNJhct_tk5kJGQ-2MIGVAFdi-s7AhDKZBg0XrVbr7hAns44mfqxabVEX9qDX9_b27Rwvla-2qt4h-oSBkJMAsN6HKxW3QV3LUzNGhdYgkh2Q';
+      const BASE_URL = 'https://apis-demo.datatrust.one/72902081959947727';
       const sourceId = Date.now();
 
       try {
@@ -1176,7 +1176,7 @@
         const payload = {
           campaign: {
             name: "Lấy sự đồng ý sử dụng dữ liệu khách hàng",
-            camp_id: isEU ? "10d79290-8e96-468c-b17d-a6af5331b465" : "f09e024c-9d01-427a-bd20-5f1dc02923f1",
+            camp_id: isEU ? "00ffa032-c02b-40c9-ae28-f6e5a72e15f2" : "4d8d235b-b1a8-4591-85b1-17aef7cf6fd0",
             type: "service",
             method: "api_sync"
           },
@@ -1210,11 +1210,15 @@
 
               purposes: [
                 {
-                  purpose_id: "81064918613796862",
+                  purpose_id: "81064919291849168",
                   status: "agreed"
                 },
                 {
-                  purpose_id: "81064917161565526",
+                  purpose_id: "81064919291825362",
+                  status: "agreed"
+                },
+                {
+                  purpose_id: "81064919291747518",
                   status: "agreed"
                 }
               ],
@@ -1222,8 +1226,10 @@
               policy: {
                 nation: isEU ? "eu" : "vn",
                 ver: "v3.2",
-                pol_name: "Privacy Policy 2026",
-                url: "https://example.com/privacy/v3.2"
+                pol_name: isEU ? "Chính sách Bảo vệ Dữ liệu — GDPR" : "Chính sách Bảo vệ Dữ liệu Cá nhân",
+                url: isEU
+                  ? "https://gdpr-info.eu/"
+                  : "https://www.vietjetair.com/vi/pages/chinh-sach-ve-quyen-rieng-tu-1702461524009"
               },
 
               channel_context: {
