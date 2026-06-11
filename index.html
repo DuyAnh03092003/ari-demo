@@ -527,14 +527,7 @@
     })();</script>
   <script type="text/javascript" id=""
     charset="">(function (b, d, e, f, c) { b.ADBROTagObject = c; b[c] = b[c] || function () { (b[c].q = b[c].q || []).push(arguments) }; a = d.createElement(e); m = d.getElementsByTagName(e)[0]; a.async = 1; a.src = f; m.parentNode.insertBefore(a, m) })(window, document, "script", "//tag.adbro.me/tags/atag.js", "atag"); atag("config", "eyJDYW1wYWlnbnMiOls2ODEzLDY4MTRdfQ\x3d\x3d"); atag("send", "pageview", { retargeting: !0 });</script>
-  <script type="text/javascript" id="" charset="">(function () {
-      var e = "6LeMMgUpAAAAAPBmzs4keCnRaSpSNwDH4N52VnA0", f = "https:\/\/vietjet-api.vietjetair.com\/booking\/recaptcha_v3", g = "submit", d = function (c, a) { console.log("Recaptcha free 1"); window.dataLayer.push({ dlv_recaptcha_score: c }); window.dataLayer.push({ dlv_recaptcha_answer: a }); writeToStorage("dlv_recaptcha_score", c); writeToStorage("dlv_recaptcha_answer", a) }; readFromStorage("dlv_recaptcha_score") || window.grecaptcha && "function" === typeof window.grecaptcha.ready && window.grecaptcha.ready(function () {
-        window.grecaptcha.execute(e, { action: g }).then(function (c) {
-          var a =
-            new XMLHttpRequest; a.open("POST", f + "?token\x3d" + c, !0); a.onreadystatechange = function () { if (a.readyState === XMLHttpRequest.DONE && 200 === a.status) { var b = JSON.parse(a.responseText); console.log("Recaptcha free 0"); console.log(b); b.google_response && ("object" == typeof b.google_response && b.google_response.score ? d(b.google_response.score, c) : "string" == typeof b.google_response && (b = JSON.parse(b.google_response), d(b.score, c))) } }; a.send()
-        })
-      })
-    })();</script>
+  
   <script type="text/javascript" id=""
     charset="">var debug = !1, mesuarement_id = "G-6ZGCC82BTL", transport_url = "https://vja-sst.useleadr.com", standardEventNames = "view_item_list select_item view_item add_to_cart view_cart begin_checkout remove_from_cart add_payment_info purchase".split(" "), sstEventNames = "page_view view_item_list select_item view_item add_to_cart view_cart begin_checkout remove_from_cart add_payment_info purchase".split(" "), ppEventNames = ["view_item_list", "purchase"]; window.leadrDL = window.leadrDL || [];
       function gtag() { leadrDL.push(arguments) } gtag("js", new Date); gtag("config", mesuarement_id, { first_party_collection: !0, send_page_view: !1 }); gtag("set", "user_properties", { ga_client_id: google_tag_manager["rm"]["1212621"](16) }); debug && console.log("Leadr event: " + google_tag_manager["rm"]["1212621"](17));
