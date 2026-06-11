@@ -1178,7 +1178,7 @@
 
         const payload = {
           campaign: {
-            name: "Lấy sự đồng ý sử dụng dữ liệu khách hàng",
+            name: isEU ? "Xin sự đồng ý theo GDPR" : "Xin sự đồng ý theo luật bảo vệ DLCN Việt Nam",
             camp_id: isEU ? "00ffa032-c02b-40c9-ae28-f6e5a72e15f2" : "4d8d235b-b1a8-4591-85b1-17aef7cf6fd0",
             type: "service",
             method: "api_sync"
