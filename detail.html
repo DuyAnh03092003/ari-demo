@@ -1092,8 +1092,8 @@
       this.textContent = 'ĐANG XỬ LÝ...';
       this.disabled = true;
 
-      const TOKEN = 'eyJraWQiOiIxLTUxZmEyNTViLTAxN2QtNDVmYS04YzdkLTI1OGYxZGVjMDhlMyIsImFsZyI6IlJTNTEyIiwidHlwIjoiSldUIn0.eyJpc3MiOiJEYXRhIFRydXN0IEludGVyZ3JhdGlvbiAtIDEiLCJzdWIiOiJUb2tlbiBBY2Nlc3MgSW50ZWdyYXRpb24iLCJleHAiOjE3OTIzNzQyOTcsIm5iZiI6MTc3NjgyMjI4NywiaWF0IjoxNzc2ODIyMjg3LCJzY29wZXMiOnsiYXBpcyI6WyJ3cml0ZSIsInJlYWQiLCJkZWxldGUiXX0sInVzZXJJZCI6IjcyMzM5MTgxNDQyMjE4NjAzIiwid29ya3NwYWNlSWQiOiI3MjkwMjA5OTMxMDczMDI3NSJ9.DUl2muVpKOAn1pNYtMB4eRrWPvcjoqoTjerAvnTRXYGhcg5BaNkpl_OqiEWyT9rTPnAlwjeLo5ljkXeGhyxzzePncYP6wdxPpiq0yCmM1aonP0kEqGgD1tn4ekFyCyW2gzmuc0l0nuiMqBCKhek_pYC6nYzVw9tsRTV1GLFoLVU';
-      const BASE_URL = 'https://apis-demo.datatrust.one/72902099310730275';
+      const TOKEN = 'eyJraWQiOiIxLTI2NGU5YjJjLWE1MWItNDg3Ni1hMzZhLTIzMDQ4ZWJjOWZhOCIsImFsZyI6IlJTNTEyIiwidHlwIjoiSldUIn0.eyJpc3MiOiJWVHJ1c3QgSW50ZWdyYXRpb24gLSAxIiwic3ViIjoiVG9rZW4gQWNjZXNzIEludGVncmF0aW9uIiwiZXhwIjoxNzk0MzAwMDc2LCJuYmYiOjE3Nzg3NDgwNjIsImlhdCI6MTc3ODc0ODA2Miwic2NvcGVzIjp7ImFwaXMiOlsid3JpdGUiLCJyZWFkIiwiZGVsZXRlIl19LCJ1c2VySWQiOiI3MjMzOTE5MjQ4OTM4NTgwMSIsIndvcmtzcGFjZUlkIjoiNzI5MDIxNDIzNjY0MDM4ODAifQ.xeApbM0X2edzdBIPD5ZcIB_qf4qUTPNENBiYK_WdRv9QhL0cRrOaXDV5f3r1BANDjCxNP9Mn_pRnvYOVV8sf0_IZPK4cxScBAruE0xVuNEGOnHhaPCy1hbqrV9f6J1QR3-WRpwBLPYv3LXps2JLd6HuQ87a35JdWk6KpP3VTUkI';
+      const BASE_URL = 'https://vietjet-uat-api.datatrust.one/72902142366403880';
       const sourceId = Date.now();
 
       try {
@@ -1103,32 +1103,91 @@
           body: JSON.stringify([{
             name: fullName, phone_number: phone, email: email,
             source_id: sourceId, service_source_id: '75998365289590102',
-            type: 'Cá nhân', status: 'Đang sử dụng',
+            type: 'Cá nhân', status: '1',
             address: '', province: '', district: '', wards: ''
           }])
         });
         const customerData = await customerRes.json();
         if (!customerRes.ok) throw new Error('Tạo khách hàng thất bại');
 
+        const subId =
+          customerData?.data?.id ||
+          customerData?.id ||
+          sourceId;
+
+        const isMinor =
+          document.getElementById('parental-block').style.display !== 'none';
+
+        const guardianName =
+          document.getElementById('pg-name')?.value.trim().toUpperCase() || '';
+
+        const guardianPhone =
+          document.getElementById('pg-phone')?.value.trim() || '';
+
+        const guardianCid =
+          document.getElementById('pg-id')?.value.trim() || '';
+
+        const guardianRelation =
+          document.getElementById('pg-relation')?.value || '';
+
+        const submittedBy = isMinor
+          ? {
+            name: guardianName || fullName,
+            email: email,
+            phone: guardianPhone,
+            cid: guardianCid,
+            rel: guardianRelation || 'Người giám hộ hợp pháp',
+            type: 'guardian',
+            at: Date.now()
+          }
+          : {
+            name: fullName,
+            email: email,
+            phone: phone,
+            cid: '',
+            rel: 'self',
+            type: 'self',
+            at: Date.now()
+          };
+
+        const verification = isMinor
+          ? {
+            status: 'verified',
+            verified_at: Date.now()
+          }
+          : {};
+
         const payload = {
           campaign_name: 'Lấy sự đồng ý sử dụng dữ liệu khách hàng',
           datas: [{
-            subject_source_id: sourceId, subject_name: fullName,
-            subject_phone: phone, subject_email: email,
-            consent_source_id: Date.now(), service_source_id: '75998365289590102',
-            create_time: Date.now(), consent_status: 'agree_all', assignees: []
+            subject_source_id: sourceId,
+            subject_name: fullName,
+            subject_phone: phone,
+            subject_email: email,
+            consent_source_id: Date.now(),
+            service_source_id: '75998365289590102',
+            create_time: Date.now(),
+            consent_status: 'agree_all',
+            assignees: []
           }],
-          source: { system_name: 'Air Booking Web', channel_name: 'web_form' },
+          source: {
+            system_name: 'Air Booking Web',
+            channel_name: 'web_form'
+          },
           campaign_source_id: 'a5b5a6be-249b-48e8-bc16-a8f3e22f47c7',
-          consent_type: 'consent_right_to_know', subject_type: 'service'
+          consent_type: 'consent_right_to_know',
+          subject_type: 'service'
         };
 
         const formData = new FormData();
         formData.append('payload', JSON.stringify(payload));
 
-        const consentRes = await fetch(`${BASE_URL}/integration/consent`, {
-          method: 'POST', headers: { Authorization: TOKEN }, body: formData
+        const consentRes = await fetch(`${BASE_URL}/integration/dsr`, {
+          method: 'POST',
+          headers: { Authorization: TOKEN },
+          body: formData
         });
+
         const consentText = await consentRes.text();
         if (!consentRes.ok) throw new Error('Gửi consent thất bại');
 
@@ -1179,9 +1238,9 @@
             <label>Quan hệ với trẻ</label>
             <select id="pg-relation">
               <option value="">-- Chọn quan hệ --</option>
-              <option>Cha</option>
-              <option>Mẹ</option>
-              <option>Người giám hộ hợp pháp</option>
+              <option value="Cha">Cha</option>
+              <option value="Mẹ">Mẹ</option>
+              <option value="Người giám hộ hợp pháp">Người giám hộ hợp pháp</option>
             </select>
           </div>
 
