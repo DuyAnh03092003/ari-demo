@@ -1208,7 +1208,7 @@
               // Version consent đang sử dụng
               version_id: "",
 
-              create_at: Date.now() - 18000000,
+              create_at: Date.now() - 10,
 
               purposes: [
                 {
@@ -1371,13 +1371,13 @@
           </div>
         </div>
 
-        <div class="parental-upload-zone" onclick="document.getElementById('pg-file-input').click()">
+        <div class="parental-upload-zone">
           <input type="file" id="pg-file-input" multiple
             accept=".pdf,.jpg,.jpeg,.png,.gif,.bmp,.webp,.doc,.docx,.xls,.xlsx"
             onchange="handleParentalFileUpload(this)" />
           <div class="puz-text">📎 Tải tài liệu minh chứng</div>
           <div class="puz-hint">
-            Giấy khai sinh, quyết định giám hộ... (không bắt buộc)
+            Giấy khai sinh, quyết định giám hộ. (không bắt buộc)
           </div>
         </div>
 
