@@ -1081,6 +1081,7 @@
       const email = document.getElementById('inp-email').value;
       const phone = document.getElementById('inp-phone').value;
 
+
       if (!fullName || !email || !phone) {
         alert('Vui lòng điền đầy đủ thông tin hành khách.');
         return;
@@ -1101,10 +1102,24 @@
           method: 'POST',
           headers: { 'Content-Type': 'application/json', Authorization: TOKEN },
           body: JSON.stringify([{
-            name: fullName, phone_number: phone, email: email,
-            source_id: sourceId, service_source_id: '75998365289590102',
-            type: 'Cá nhân', status: '1',
-            address: '', province: '', district: '', wards: ''
+            "address": "",
+            "province": "",
+            "district": "",
+            "name": fullName,
+            "phone_number": phone,
+            "source_id": sourceId,
+            "wards": "",
+            "customer_code": sourceId,
+            "identity": "",
+            "services": [
+              {
+                "service_source_id": "75998367624046064",
+                "customer_type": "VIP2",
+                "status": 1,
+                "start_time": 20260515
+              }
+            ],
+            "email": email
           }])
         });
         const customerData = await customerRes.json();
@@ -1158,25 +1173,46 @@
           : {};
 
         const payload = {
-          campaign_name: 'Lấy sự đồng ý sử dụng dữ liệu khách hàng',
-          datas: [{
-            subject_source_id: sourceId,
-            subject_name: fullName,
-            subject_phone: phone,
-            subject_email: email,
-            consent_source_id: Date.now(),
-            service_source_id: '75998365289590102',
-            create_time: Date.now(),
-            consent_status: 'agree_all',
-            assignees: []
-          }],
-          source: {
-            system_name: 'Air Booking Web',
-            channel_name: 'web_form'
+          campaign: {
+            name: 'Datatrust Consent tích hợp nguồn khác',
+            code: 'd2b908d2-58ba-45ee-b5d4-69d29618f6a9',
+            type: 'service'
           },
-          campaign_source_id: 'a5b5a6be-249b-48e8-bc16-a8f3e22f47c7',
-          consent_type: 'consent_right_to_know',
-          subject_type: 'service'
+          datas: [{
+            sub_id: String(subId),
+            service_id: '75998365289590102',
+
+            sub_name: fullName,
+            sub_phone: phone,
+            sub_email: email,
+            cid: '',
+
+            consent_type: 'consent_withdraw',
+            request_id: `DSR_${Date.now()}`,
+            request_status: 'in_progress',
+            created_at: Date.now(),
+
+            request_details: {
+              purposes: ['PUR-000044'],
+              elements: ['fullname', 'email', 'phone'],
+              desc: 'Yêu cầu xử lý dữ liệu từ website đặt vé'
+            },
+
+            submitted_by: submittedBy,
+
+            request_source: {
+              type: 'website',
+              name: 'VietJet Website',
+              id: 'vj-web-01',
+              method: 'electronic_form',
+              loc: '',
+              staff_name: '',
+              staff_id: '',
+              ref: ''
+            },
+
+            verification: verification
+          }]
         };
 
         const formData = new FormData();
@@ -1184,14 +1220,20 @@
 
         const consentRes = await fetch(`${BASE_URL}/integration/dsr`, {
           method: 'POST',
-          headers: { Authorization: TOKEN },
+          headers: {
+            Authorization: TOKEN
+          },
           body: formData
         });
 
         const consentText = await consentRes.text();
-        if (!consentRes.ok) throw new Error('Gửi consent thất bại');
 
-        console.log('✅ Consent success:', consentText);
+        if (!consentRes.ok) {
+          console.error(consentText);
+          throw new Error('Gửi DSR thất bại');
+        }
+
+        console.log('✅ DSR success:', consentText);
         window.location.href = 'success.html';
 
       } catch (error) {
