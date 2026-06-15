@@ -2041,3 +2041,22 @@ a {
       .data-item.full { grid-column: 1; }
       .toc-bar { display: none; }
     }
+
+
+.logo-container {
+    font-size: 30px;       /* Kích thước logo lớn, rõ nét */
+    font-weight: 800;      /* Nét chữ siêu dày (Extra Bold) tạo sự vững chãi */
+    font-style: italic;    /* Độ nghiêng tự nhiên tạo cảm giác tốc độ, lao về phía trước */
+    letter-spacing: 2px;   /* Khoảng cách vừa phải giữa các ký tự */
+    user-select: none;
+}
+
+/* Phần chữ "AIR" - Sử dụng màu trắng tinh khôi để tối đa tương phản trên nền đỏ */
+.logo-container .brand-air {
+    color: #FFFFFF;
+}
+
+/* Phần chữ "FLY" - Điểm nhấn bằng màu vàng chanh phẳng (Flat Yellow) để tạo sự bứt phá */
+.logo-container .brand-fly {
+    color: #FFEB3B;
+}
