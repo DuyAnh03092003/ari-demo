@@ -297,7 +297,7 @@
               <div class="s-city">TP. HCM <span class="s-iata">SGN</span></div>
             </div>
             <div class="summary-meta">
-              <div class="s-flight-num" id="flight-display">VJ 123</div>
+              <div class="s-flight-num" id="flight-display">AF 123</div>
               <div class="s-fare-type eco-badge">ECO</div>
             </div>
           </div>
@@ -789,10 +789,10 @@
   <script>
     // ─── Flight data ───────────────────────────────────────────────────────────
     const flights = {
-      'VJ123': { num: 'VJ 123', price: '1,200,000đ', total: '1,380,000đ' },
-      'VJ125': { num: 'VJ 125', price: '1,500,000đ', total: '1,680,000đ' }
+      'AF123': { num: 'AF 123', price: '1,200,000đ', total: '1,380,000đ' },
+      'AF125': { num: 'AF 125', price: '1,500,000đ', total: '1,680,000đ' }
     };
-    const id = sessionStorage.getItem('selectedFlight') || 'VJ123';
+    const id = sessionStorage.getItem('selectedFlight') || 'AF123';
     const f = flights[id];
     if (f) {
       document.getElementById('flight-display').textContent = f.num;
